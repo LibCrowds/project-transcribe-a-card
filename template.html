@@ -46,7 +46,7 @@ img#photo {
 <div class="row skeleton">
     <!-- Start Skeleton Row-->
     <div class="col-xs-12 col-sm-5 col-sm-pull-7 col-md-6 col-md-pull-6">
-
+        
         <!-- Success and Error Messages for the user -->
         <div id="alert-row">
             <div class="alert alert-success remove-margin-bottom" id="success" style="display:none;">
@@ -67,99 +67,111 @@ img#photo {
                 <span id ="error-details"></span>
             </div>
         </div>
-
+      
         <!-- Start of Question and Submission DIV (column) -->
         <div class="row vcenter-md hcenter">
             <div class="col-md-8 col-xs-12">
-                <h1 id="question">What is this item?</h1><!-- The question will be loaded here -->
+                <h1 id="question">What is this item?</h1>
             </div>
+          
             <div class="col-md-4 hidden-xs hidden-sm">
-                <a href="../tutorial" class="btn btn-inverse pull-right"><i class="fa fa-book"></i> Tutorial</a><br>
+                <!-- <a href="../tutorial" class="btn btn-inverse pull-right"><i class="fa fa-book"></i> Tutorial</a><br> -->
             </div>
+			
         </div>
-
+      
         <!-- Start of answer DIV -->
         <form id="transcription-form" name="transcription-form" role="form">
-
+          
             <!-- Shelfmark, ISBN and language -->
-            <div id="form-step-1">
+            <div class="form-step" data-step="1"  style="display:none;">
                 <div class="form-group">
-                    <label for="shelfmark-field">Shelfmark:</label>
-                    <span rel="popover" data-content="If the resource or card has a shelfmark transcribe it exactly as given, including upper and
+                    <label for="shelfmark-field">Shelfmark:</label> 
+                    <span rel="popover" data-content="If the resource or card has a shelfmark transcribe it exactly as given, including upper and 
                     lower-case letters and any punctuation and spaces." class="fa fa-question-circle question-popover"></span>
-                    <input class="form-control multipart-required input-popover" data-content="Please fill in the shelfmark"
+                    <input class="form-control" data-content="Please fill in the shelfmark" 
                     id="shelfmark-field" placeholder="Usually at the top-right of the card" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="isbn-field">ISBN:</label>
-                    <span rel="popover" data-content="Record the ISBN if present, omitting any hyphens or spaces. If there is more than one ISBN,
-                    enter the one that identifies the item in hand." class="fa fa-question-circle question-popover"></span>
+                    <label for="isbn-field">ISBN:</label> 
+                    <span rel="popover" data-content="Record the ISBN if present, omitting any hyphens or spaces. If there is more than one ISBN, 
+                    enter the one that most accurately identifies the item." class="fa fa-question-circle question-popover"></span>
                     <input class="form-control" id="isbn-field" placeholder="Usually towards the bottom of the card" type="text">
                 </div>
-
-                <div class="cloned-parent">
-                    <label>Language:</label>
-                    <span rel="popover" data-content="Enter the main language of the resource, followed by any additional languages."
+              
+                <div class="form-group">
+                    <label for="language-field">Language:</label>
+                    <span rel="popover" data-content="Enter the main language of the item." 
                     class="fa fa-question-circle question-popover"></span>
-                    <div class="form-group cloned-input">
-                        <div class="input-group">
-                            <input class="form-control langauge-field cloned-field" placeholder="The language of the resource" type="text">
-                            <span class="input-group-btn"><button class="btn btn-default clone language-btn" type="button"><span class="fa fa-plus"></span></button></span>
-                        </div>
-                    </div>
+                    <select id="language-field" style="width: 100%">
+                    </select>
                 </div>
-
+              
+                <label class="checkbox-inline">
+                    <input class="hidden-field-checkbox" data-groups='["language"]' id="series" type="checkbox"> 
+                    This item is written in more than one language
+                </label>
+                <div class="form-group margin-top-sm" id="language" style="display:none;">
+                    <label for="additional-language-field">Additional languages:</label>
+                    <span rel="popover" data-content="Enter any additional languages of the item." 
+                    class="fa fa-question-circle question-popover"></span>
+                    <select id="additional-language-field" multiple="multiple" style="width: 100%">
+                    </select>
+                </div>
+              
                 <hr>
-                <div class="pull-right-md text-center" role="group">
-                    <input class="btn btn-success btn-form-step" data-step="2" type="submit" value="Next Step">
+                <div class="pull-right-md" role="group">
+                    <a href="#" class="btn btn-success btn-next">Next Step</a> 
                 </div>
             </div>
-
+            
             <!-- Title -->
-            <div id="form-step-2" style="display:none;">
+            <div class="form-step" data-step="2" style="display:none;">
                 <div class="form-group">
-                    <label for="romanised-title-field">Title (romanised):</label>
-                    <span rel="popover" data-content="Transcribe the title, capitalising only the first letter and any proper nouns."
+                    <label for="romanised-title-field">Title:</label>
+                    <span rel="popover" data-content="Transcribe the title, capitalising only the first letter of the first word and any proper nouns." 
                     class="fa fa-question-circle question-popover"></span>
-                    <input class="form-control multipart-required input-popover" data-content="Please fill in the title" id="romanised-title-field"
-                    placeholder="Usually at the top of the card" type="text">
+                    <input class="form-control multipart-required input-popover" data-content="Please fill in the title" 
+                    id="romanised-title-field" placeholder="Usually at the top of the card" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="title-field">Title (original script):</label>
-                    <span rel="popover" data-content="If the Title was a romanised version, give the original here."
+                    <label for="title-field">Title (non-Roman script):</label>
+                    <span rel="popover" data-content="If the title was a romanised version, give the original here." 
                     class="fa fa-question-circle question-popover"></span>
                     <input class="form-control" id="title-field" placeholder="Usually at the top of the card" type="text">
                 </div>
-
+              
                 <div class="form-group">
-                    <label for="romanised-subtitle-field">Subtitle (romanised):</label>
+                    <label for="romanised-subtitle-field">Subtitle:</label>
                     <span rel="popover" data-content="If there is a subtitle, transcribe it here." class="fa fa-question-circle question-popover"></span>
                     <input class="form-control" id="romanised-subtitle-field" placeholder="Usually at the top of the card" type="text">
                 </div>
                 <div class="form-group">
-                    <label for="subtitle-field">Subtitle (original script):</label>
+                    <label for="subtitle-field">Subtitle (non-Roman):</label>
                     <span rel="popover" data-content="If the subtitle was a romanised version, give the original here." class="fa fa-question-circle question-popover"></span>
                     <input class="form-control" id="subtitle-field" placeholder="Usually at the top of the card" type="text">
                 </div>
-
+              
                 <hr>
-                <div class="pull-right-md text-center" role="group">
-                    <a class="btn btn-default btn-form-step" data-step="1" href="#"><i class="fa fa-arrow-left"></i> Previous Step</a>
-                    <input class="btn btn-success btn-form-step" data-step="3" type="submit" value="Next Step">
+                <div class="pull-right-md" role="group">
+                    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a> 
+                    <a href="#" class="btn btn-success btn-next">Next Step</a> 
                 </div>
             </div>
-
+            
             <!-- Author -->
-            <div id="form-step-3" style="display:none;">
+            <div class="form-step" data-step="3" style="display:none;">
                 <div class="cloned-parent margin-bottom-lg">
                     <div class="cloned-input author-parent">
                         <div class="form-group">
-                            <label>Author (romanised):</label>
-                            <input class="form-control cloned-field romanised-author-field" placeholder="Usually underneath the title" type="text">
+                            <label>Author:</label>
+                            <input class="form-control cloned-field romanised-author-field" placeholder="Surname, First name" type="text">
                         </div>
                         <div class="form-group">
-                            <label>Author (original script):</label>
-                            <input class="form-control cloned-field author-field" placeholder="Usually underneath the title" type="text">
+                            <label>Author (non-Roman script):</label>
+                            <span rel="popover" data-content="If the author was a romanised version, give the original here (Surname, First name)." 
+                    		class="fa fa-question-circle question-popover"></span>
+                            <input class="form-control cloned-field author-field" placeholder="Surname, First name" type="text">
                         </div>
                         <div class="form-group">
                             <label>Relationship to resource:</label>
@@ -194,102 +206,109 @@ img#photo {
                     </div>
                 </div>
 
-                <div class="pull-right-md text-center" role="group">
-                    <a class="btn btn-default btn-form-step" data-step="2" href="#"><i class="fa fa-arrow-left"></i> Previous Step</a>
-                    <input class="btn btn-success btn-form-step" data-step="4" type="submit" value="Next Step">
+                <div class="pull-right-md" role="group">
+                    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a> 
+                    <a href="#" class="btn btn-success btn-next">Next Step</a> 
                 </div>
             </div>
-
+            
             <!--Edition, pages, size, illustrations and series-->
-            <div id="form-step-4" style="display:none;">
+            <div class="form-step" data-step="4" style="display:none;">
                 <div class="form-group">
                     <label for="edition-field">Edition:</label>
                     <span rel="popover" data-content="Transcribe any edition statement exactly as it appears." class="fa fa-question-circle question-popover"></span>
-                    <input class="form-control" id="edition-field" placeholder="Any edition statement provided" type="text">
+                    <input class="form-control" id="edition-field" placeholder="Leave blank if no edition statement provided" type="text">
                 </div>
                 <div class="form-group">
                     <label for="pages-field">Pages:</label>
-                    <span rel="popover" data-content="Record the number of pages. If cataloguing from a card do not use abbreviations if found: use the term
-                    ÒpagesÓ instead of Òp.Ó or Òpp.Ó." class="fa fa-question-circle question-popover"></span>
-                    <input class="form-control" id="pages-field" placeholder="The number of printed pages, if provided" type="text">
+                    <span rel="popover" data-content="Record the number of pages. If cataloguing from a card do not use abbreviations if found: use the term 
+                    â€œpagesâ€ instead of â€œp.â€ or â€œpp.â€." class="fa fa-question-circle question-popover"></span>
+                    <input class="form-control" id="pages-field" placeholder="Leave blank if number of pages not provided" type="text">
                 </div>
                 <div class="form-group">
                     <label for="illustrations-field">Illustrations:</label>
-                    <span rel="popover" data-content="Record any illustrative content. Do not capitalise. If cataloguing from a card do not use abbreviations
-                    if found: use the term ÒillustrationsÓ instead of Òill.Ó." class="fa fa-question-circle question-popover"></span>
-                    <input class="form-control" id="illustrations-field" placeholder="The number of illustrations, if provided" type="text">
+                    <span rel="popover" data-content="Record any illustrative content. Do not capitalise. If cataloguing from a card do not use abbreviations 
+                    if found: use the term â€œillustrationsâ€ instead of â€œill.â€." class="fa fa-question-circle question-popover"></span>
+                    <input class="form-control" id="illustrations-field" placeholder="Leave blank if number of illustrations  not provided" type="text">
                 </div>
-
+              
                 <label class="checkbox-inline">
-                    <input class="hidden-field-checkbox" data-groups='["series-title", "series-num"]' id="series" type="checkbox">
+                    <input class="hidden-field-checkbox" data-groups='["series-title", "series-num"]' id="series" type="checkbox"> 
                     This item is part of a series
                 </label>
                 <div class="form-group margin-top-sm" id="series-title" style="display:none;">
-                    <label for="series-title-field">Series title:</label>
-                    <span rel="popover" data-content="Transcribe any series title title in romanised form, capitalising only the first letter and any proper nouns."
+                    <label for="series-title-field">Series title:</label> 
+                    <span rel="popover" data-content="Transcribe any series title title in romanised form, capitalising only the first letter and any proper nouns." 
                     class="fa fa-question-circle question-popover"></span>
                     <input class="form-control" id="series-title-field" placeholder="Enter the series to which the item belongs" type="text">
                 </div>
                 <div class="form-group" id="series-num" style="display:none;">
                     <label for="series-num-field">Number in series:</label>
-                    <span rel="popover" data-content="Transcribe any series numbering, including any designation as given."
+                    <span rel="popover" data-content="Transcribe any series numbering, including any designation as given." 
                     class="fa fa-question-circle question-popover"></span>
                     <input class="form-control" id="series-num-field" placeholder="Enter if the number in the series is given (e.g. Volume 1)" type="text">
                 </div>
-
+              
                 <hr>
-                <div class="pull-right-md text-center" role="group">
-                    <a class="btn btn-default btn-form-step" data-step="3" href="#"><i class="fa fa-arrow-left"></i> Previous Step</a>
-                    <input class="btn btn-success btn-form-step" data-step="5" type="submit" value="Next Step">
+                <div class="pull-right-md" role="group">
+                    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a> 
+                    <a href="#" class="btn btn-success btn-next">Next Step</a> 
                 </div>
             </div>
-
+            
             <!--Publisher, place and year of publication-->
-            <div id="form-step-5" style="display:none;">
+            <div class="form-step" data-step="5" style="display:none;">
+                <div class="form-group">
+                    <label for="country-field">Country of publication:</label>
+                    <span rel="popover" data-content="Enter the country of publication." class="fa fa-question-circle question-popover"></span>
+                    <select id="country-field" style="width: 100%">
+                      <option value="" selected="selected"></option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="pop-field">Place of publication:</label>
-                    <span rel="popover" data-content="Transcribe the place of publication as it appears in the source. If more than one place is given, only
+                    <span rel="popover" data-content="Transcribe the place of publication as it appears in the source. If more than one place is given, only 
                     the first is required." class="fa fa-question-circle question-popover"></span>
                     <input class="form-control" id="pop-field" placeholder="Usually towards the bottom of the card" type="text">
                 </div>
                 <div class="form-group">
                     <label for="publisher-field">Publisher:</label>
-                    <span rel="popover" data-content="Transcribe the publisherÕs name as it appears in the source. If a name is not given but can be
+                    <span rel="popover" data-content="Transcribe the publisherâ€™s name as it appears in the source. If a name is not given but can be 
                     ascertained from within or outside the resource include it in square brackets." class="fa fa-question-circle question-popover"></span>
                     <input class="form-control" id="publisher-field" placeholder="Usually towards the bottom of the card" type="text">
                 </div>
                 <div class="form-group">
                     <label for="pubyear-field">Year of publication:</label>
-                    <span rel="popover" data-content="Transcribe the date as given, unless expressed as words (i.e. Ô1980Õ, not ÔNineteen eightyÕ)."
+                    <span rel="popover" data-content="Transcribe the date as given, unless expressed as words (i.e. â€˜1980â€™, not â€˜Nineteen eightyâ€™)." 
                     class="fa fa-question-circle question-popover"></span>
-                    <input class="form-control input-popover" id="pubyear-field" placeholder="Usually towards the bottom of the card" type="text">
+                    <input class="form-control input-popover multipart-required" id="pubyear-field" placeholder="Usually towards the bottom of the card" type="text">
                 </div>
                 <label class="checkbox-inline">
-                    <input class="hidden-field-checkbox" data-groups='["yop-b-group"]' id="non-gregorian" type="checkbox">
+                    <input class="hidden-field-checkbox" data-groups='["yop-b-group"]' id="non-gregorian" type="checkbox"> 
                     The year above does not conform to the Gregorian calendar
                 </label>
                 <div class="form-group margin-top-sm" id="yop-b-group" style="display:none;">
-                    <label for="norm-pubyear-field">Normalised year of publication:</label>
-                    <span rel="popover" data-content="If the year of publication was given in Roman numerals or was in brackets,
-                    supply a four-digit Arabic number with any uncertain digits given as ÔuÕ."
-                    class="fa fa-question-circle question-popover"></span>
+                    <label for="norm-pubyear-field">Normalised year of publication:</label> 
+                    <span rel="popover" data-content="If the year of publication was given in Roman numerals or was in brackets, 
+                    supply a four-digit Arabic number with any uncertain digits given as â€˜uâ€™." class="fa fa-question-circle question-popover"></span>
                     <input class="form-control" id="norm-pubyear-field" placeholder="The Gregorian calendar year should be converted from this and still entered above" type="text">
                 </div>
-
+                
                 <hr>
-                <div class="pull-right-md text-center" role="group">
-                    <a class="btn btn-default btn-form-step" data-step="4" href="#"><i class="fa fa-arrow-left"></i> Previous Step</a>
-                    <input class="btn btn-success btn-form-step" data-step="6" type="submit" value="Next Step">
+                <div class="pull-right-md" role="group">
+                    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a> 
+                    <a href="#" class="btn btn-success btn-next">Next Step</a> 
                 </div>
             </div>
-
+          
             <!--Subject headings-->
-            <div id="form-step-6" style="display:none;">
+            <div class="form-step" data-step="6" style="display:none;">
                 <div class="form-group">
                     <label>Subject headings:</label>
+                    <span rel="popover" data-content="Use the box below to search for any number of relevent subject headings." class="fa fa-question-circle question-popover"></span>
                     <div id="selected-subjects"></div>
                     <div class="input-group">
-                        <input class="form-control" id="subject-search-field" placeholder="Search for appropriate subject headings" type="text">
+                        <input class="form-control" id="subject-search-field" placeholder="Search for appropriate subject headings" type="text"> 
                         <span class="input-group-btn">
                             <button class="btn btn-default" id="subject-search-btn" type="button">
                                 <span class="fa fa-search"></span>
@@ -301,31 +320,29 @@ img#photo {
                 <div class="pull-right"><small id="subject-search-count"></small></div>
                 <div id="subject-search-results" class="padding-top-md"></div>
                 <hr class="padding-top-sm">
-                <div class="pull-right-md text-center" role="group">
-                    <a class="btn btn-default btn-form-step" data-step="5" href="#"><i class="fa fa-arrow-left"></i> Previous Step</a>
-                    <input class="btn btn-success btn-form-step" data-step="7" type="submit" value="Next Step">
+                <div class="pull-right-md" role="group">
+                    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a> 
+                    <a href="#" class="btn btn-success btn-next">Next Step</a> 
                 </div>
             </div>
-
-            <!--Notes-->
-            <div id="form-step-7" style="display:none;">
+          
+            <!--Comments-->
+            <div class="form-step" data-step="7" style="display:none;">
                 <div class="form-group">
-                    <label for="notes-field">Notes:</label>
-                    <textarea class="form-control margin-bottom-xs" rows="5" id="notes-field" placeholder="Any other information that could be important"></textarea>
+                    <label for="comments-field">Comments:</label>
+                    <span rel="popover" data-content="Use this column to enter comments for British Library staff." class="fa fa-question-circle question-popover"></span>
+                    <textarea class="form-control margin-bottom-xs" rows="5" id="comments-field" 
+                    placeholder="Any other information that could be useful for British Library staff."></textarea>
                 </div>
                 <hr>
-                <div class="pull-right-md text-center" role="group">
-                    <a class="btn btn-default btn-form-step" data-step="6" href="#"><i class="fa fa-arrow-left"></i> Previous Step</a>
-                    <a class="btn btn-success btn-answer" href="#" value="Done"><i class="fa fa-thumbs-o-up"></i> Done</a>
+                <div class="pull-right-md" role="group">
+                    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a> 
+                    <a href="#" class="btn btn-success btn-answer" value="Done"><span class="fa fa-thumbs-o-up"></span> Done</a>
                 </div>
             </div>
-
+          
         </form>
-
-        <div class="col-xs-12 text-center hidden-md hidden-lg">
-            <a class="btn btn-inverse" data-target="#modal" data-toggle="modal" href="#"><i class="fa fa-book"></i> Tutorial</a>
-        </div>
-
+     
         <!-- Feedback items for the user -->
         <div class="padding-top-lg text-center">
             <p id="last-edited"></p>
@@ -339,7 +356,7 @@ img#photo {
 </div>
 
 <script>
-
+  
   /**Load the previous task run assoicated with the current task.*/
   function loadWiki(task) {
     $.ajax({
@@ -354,7 +371,6 @@ img#photo {
         $("#last-edited").html('Last edited ' + date);
         $('#shelfmark-field').val(answer['shelfmark']);
         $('#isbn-field').val(answer['isbn']);
-        $('.langauge-field:first').val(answer['language']);
         $('#romanised-title-field').val(answer['romanised_title']);
         $('#title-field').val(answer['title']);
         $('#romanised-title-field').val(answer['romanised_title']);
@@ -363,36 +379,35 @@ img#photo {
         $('#edition-field').val(answer['edition']);
         $('#pages-field').val(answer['pages']);
         $('#illustrations-field').val(answer['illustrations']);
-        $('#pop-field').val(answer['place_of_publication']);
         $('#publisher-field').val(answer['publisher']);
-        $('#notes-field').val(answer['notes']);
+        $('#comments-field').val(answer['comments']);
         $('#series-title-field').val(answer['series_title']);
         $('#series-num-field').val(answer['series_number']);
         $('#pubyear-field').val(answer['publication_year']);
         $('#norm-pubyear-field').val(answer['normalised_publication_year']);
-
-        var multipleLangauges = answer['multiple_languages'].split(',');
-        for (var i in multipleLangauges) {
-          $('.clone.language-btn:first').triggerHandler('click');
-          $('.langauge-field:last').val(multipleLangauges[i]);
-        }
-
+        $('#pop-field').val(answer['place_of_publication']);
+        
+        $('#country-field').val(answer['country']).trigger("change");
+        $('#language-field').val(answer['language']).trigger("change");
+        $('#additional-language-field').val(answer['multiple_languages']).trigger("change");
+        
+        
         if(answer['series_title'].length + answer['series_number'].length > 0) {
           $("#series").prop('checked', 'checked');
           $("#series-title").slideDown();
           $("#series-num").slideDown();
         }
-
+        
         if(answer['normalised_publication_year'].length > 0) {
           $("#non-gregorian").prop('checked', 'checked');
           $("#yop-b-group").slideDown();
         }
-
+        
         var subjects = $.parseJSON(answer['subjects']);
         for (var i = 0; i < subjects.length; i++) {
           addSubject(subjects[i]);
         }
-
+        
         var authors = $.parseJSON(answer['authors']);
         for (var i in authors) {
           if (i > 0) {
@@ -406,8 +421,8 @@ img#photo {
       }
     });
   }
-
-
+  
+  
   /**Select a subject heading.*/
   function addSubject(elem) {
     var subject = elem;
@@ -415,107 +430,116 @@ img#photo {
       subject = $($(elem).parents('.subject').children()[0]).html();
     }
     var selectedSubjects = $('#selected-subjects').html();
-    selectedSubjects += '<div class="row subject padding-top-xs padding-bottom-xs"><div class="col-xs-8 selected-subject">' + subject
-                      + '</div><div class="col-xs-4"><a class="btn btn-inverse pull-right" onclick="removeSubject(this)">'
+    selectedSubjects += '<div class="row subject padding-top-xs padding-bottom-xs"><div class="col-xs-8 selected-subject">' + subject 
+                      + '</div><div class="col-xs-4"><a class="btn btn-inverse pull-right" onclick="removeSubject(this)">' 
                       + '<span class="fa fa-remove"></span> Remove</a></div></div>';
     $('#selected-subjects').show();
     $('#selected-subjects').html(selectedSubjects);
   }
-
-
+  
+  
   /**Deselect a subject heading.*/
   function removeSubject(elem) {
     var subject = $(elem).parents('.subject')[0];
     subject.parentElement.removeChild(subject);
   }
-
-
+  
+  
   /**Perform a subject heading search and load the results.*/
   $(document).delegate('#subject-search-btn', 'click', function(e) {
-    $(this).children('.fa-spin').show();
-    $(this).children('.fa-search').hide();
     var query = $('#subject-search-field').val();
-    $('#subject-search-results').html('');
-    $.ajax({
-      url: 'http://fast.oclc.org/searchfast/fastsuggest',
-      data: 'query=' + query,
-      dataType: 'jsonp'
-    }).done(function(data) {
-      var count = data['response']['numFound'];
-      $('#subject-search-count').html(count + ' suggestions found');
-      var suggestions = data['response']['docs'];
-      for (var i = 0; i < suggestions.length; i++) {
-        $('#subject-search-results').append('<div class="row subject"><div class="col-xs-8">' + suggestions[i]['suggestall'] + '</div><div class="col-xs-4">'
-                                            + '<a class="btn btn-inverse pull-right" onclick="addSubject(this)">'
-                                            + '<span class="fa fa-plus"></span> Add</a></div></div>');
-      }
-    }).always(function(data) {
-        $('#subject-search-btn').children('.fa-spin').hide();
-        $('#subject-search-btn').children('.fa-search').show();
-    });
+    if (query.length > 0) {
+      $(this).children('.fa-spin').show();
+      $(this).children('.fa-search').hide();
+      $('#subject-search-results').html('');
+      $.ajax({
+        url: 'http://fast.oclc.org/searchfast/fastsuggest',
+        data: 'query=' + query,
+        dataType: 'jsonp'
+      }).done(function(data) {
+        var count = data['response']['numFound'];
+        $('#subject-search-count').html(count + ' suggestions found');
+        var suggestions = data['response']['docs'];
+        for (var i = 0; i < suggestions.length; i++) {
+          $('#subject-search-results').append('<div class="row subject"><div class="col-xs-8">' + suggestions[i]['suggestall'] + '</div><div class="col-xs-4">' 
+                                              + '<a class="btn btn-inverse pull-right" onclick="addSubject(this)">' 
+                                              + '<span class="fa fa-plus"></span> Add</a></div></div>');
+        }
+      }).always(function(data) {
+          $('#subject-search-btn').children('.fa-spin').hide();
+          $('#subject-search-btn').children('.fa-search').show();
+      });
+    }
   });
-
-
+  
+  
   /**Clear subject headings.*/
   function clearSubjects() {
   	$('#selected-subjects').html('');
     $('#subject-search-results').html('');
     $('#subject-search-count').html('');
   }
-
-
+  
+  
   /**Key bindings.*/
   $(window).keydown(function(e) {
-    if (event.keyCode == 13) {  //Press enter to go to the next page
+    var page = parseInt($('.form-step:visible').data('step'));
+    //Enter to search or go to the next page
+    if (event.keyCode == 13) {  
       e.preventDefault();
-      if ($('#form-step-1').is(":visible") && pageValid()) {
-        nextPage(2)
-      } else if ($('#form-step-2').is(":visible") && pageValid()) {
-        nextPage(3);
-      } else if ($('#form-step-3').is(":visible") && pageValid()) {
-        nextPage(4);
-      } else if ($('#form-step-4').is(":visible") && pageValid()) {
-        nextPage(5);
-      } else if ($('#form-step-5').is(":visible") && pageValid()) {
-        nextPage(6);
-      } else if ($('#form-step-6').is(":visible") && pageValid()) {
-        $('#subject-search-btn').click();  //Perform search instead of moving to next page
-      } else if ($('#form-step-7').is(":visible") && pageValid()) {
-        $('.btn-answer').triggerHandler('click');
+      if (page == 6) {
+        $('#subject-search-btn').click();
+      } else if (page == 7) {
+         $('.btn-answer').triggerHandler('click');
+      } else {
+      	changePage(page + 1);
       }
-    } else if (event.shiftKey && event.keyCode == 8) {  //Press shift and delete to go to the previous page
+      
+    //Shift and delete to go to the previous page
+    } else if (event.shiftKey && event.keyCode == 8 && page > 1) {
       e.preventDefault();
-      if ($('#form-step-2').is(":visible") && pageValid()) {
-        nextPage(1);
-      } else if ($('#form-step-3').is(":visible") && pageValid()) {
-        nextPage(2);
-      } else if ($('#form-step-4').is(":visible") && pageValid()) {
-        nextPage(3);
-      } else if ($('#form-step-5').is(":visible") && pageValid()) {
-        nextPage(4);
-      } else if ($('#form-step-6').is(":visible") && pageValid()) {
-        nextPage(5);
-      } else if ($('#form-step-7').is(":visible") && pageValid()) {
-        nextPage(6);
-      }
+      changePage(page - 1)
     }
   });
-
-
+  
+  
   /**Override default form submission behaviour.*/
   $('form').submit(function() {
     return false;
   });
-
-
-  /**Cycle through the form steps.*/
-  $(document).delegate('.btn-form-step', 'click', function(e) {
-    if (pageValid()) {
-      nextPage(Number($(this).attr('data-step')));
+  
+  
+  /**Go to the next page.*/
+  $(document).delegate('.btn-next', 'click', function(e) {
+    if (validate()) {
+      var page = parseInt($('.form-step:visible').data('step'));
+      changePage(page + 1);
     }
   });
-
-
+  
+  
+  /**Go to the previous page.*/
+  $(document).delegate('.btn-previous', 'click', function(e) {
+    var page = parseInt($('.form-step:visible').data('step'));
+  	changePage(page - 1);
+  });
+  
+  
+  /**Move to the next page.*/
+  function changePage(i) {
+    $('.form-step[data-step=' + (i - 1) + ']').slideUp();
+    $('.form-step[data-step=' + (i + 1) + ']').slideUp();
+    
+    
+    $('.form-step[data-step=' + i + ']').slideDown({
+      complete: function(){
+        $("input:visible, textarea:visible").first().focus();
+      }
+    });
+    showProgress(i, 7);
+  }
+  
+  
   /**Show a hidden form field when associated box checked.*/
   $(document).delegate('.hidden-field-checkbox', 'click', function(e) {
     var groups = $(this).data('groups');
@@ -523,36 +547,36 @@ img#photo {
       $('#' + groups[i]).slideToggle();
     });
   });
-
-
+  
+  
   /**Create a clone.*/
   function cloneInput() {
     var parent = $(this).parents(".cloned-parent");
     var clone = $(parent).find(".cloned-input:last").clone();
-
+    
     $(clone).find('.cloned-field').each(function(i) {
       $(this).val('');
       $(this).siblings('.input-group-btn').children('.btn').removeClass('clone').addClass('remove-clone').children('.fa').addClass('fa-minus').removeClass('fa-plus');
     });
-
+    
     $(clone).find('.author-type input').each(function() {
       $(this).prop('name', 'authradio' + parseInt($('.author-type').length) + 1);
     });
-
+    
     $(clone).appendTo(parent);
     $(clone).on('click', 'button.clone', cloneInput);
   }
-
-
+  
+  
   $("button.clone").on("click", cloneInput);
-
-
+  
+  
   /**Remove a clone.*/
   $(document).delegate('button.remove-clone', 'click', function(e) {
     $(this).parents(".cloned-input").remove();
   });
-
-
+  
+  
   /**Remove all cloned fields.*/
   function removeAllClones() {
     $(".cloned-parent").each(function() {
@@ -561,50 +585,30 @@ img#photo {
       });
     });
   }
-
-
-  /**Move to the next page.*/
-  function nextPage(i) {
-    $('#form-step-' + (i - 1)).slideUp();
-    $('#form-step-' + (i + 1)).slideUp();
-    $('#form-step-' + i).slideDown({
-      complete: function(){
-        $("input:visible, textarea:visible").first().focus();
-      }
-    });
-    showProgress(i, 7);
-  }
-
-
+  
+  
   /**Validate fields on focus out.*/
   $(".form-control").focusout(function() {
     validateField($(this), false);
-    if (typeof($(this).data('otherwise')) !== "undefined") {
-      validateField($('#' + $(this).data('otherwise')), false);
-    }
   });
-
-
+  
+  
   /**Reset field validation on focus in.*/
   $(".form-control").focusin(function() {
     clearValidation($(this));
     $('input').popover('hide');
   });
-
-
+  
+  
   /**Clear field validation.*/
   function clearValidation(field) {
     field.parent().removeClass('has-error');
     field.parent().removeClass('has-success');
-    if (typeof(field.data('otherwise')) !== "undefined") {
-      $('#' + field.data('otherwise')).parent().removeClass('has-error');
-      $('#' + field.data('otherwise')).parent().removeClass('has-success');
-    }
   }
-
-
+  
+  
   /**Validate all visible input fields.*/
-  function pageValid() {
+  function validate() {
     var invalid = false;
     $('input').filter(':visible').each(function() {
       if (!validateField($(this), true)) {
@@ -613,25 +617,12 @@ img#photo {
     });
     return !invalid;
   }
-
-
+  
+  
   /**Validate an input field.*/
   function validateField(field, showPopover) {
     clearValidation(field);
-
-    // If one of two fields are required, and the other is valid
-    if (typeof(field.data('otherwise')) !== "undefined" && $('#' + field.data('otherwise')).val() !== "") {
-
-      //Only one of these fields should be populated
-      if (field.val() !== "") {
-        field.parent().addClass('has-error');
-        field.popover('show');
-        return false;
-      }
-      $('#' + field.data('otherwise')).parent().addClass('has-success');
-      return true;
-    }
-
+  
     //Required fields
     if (field.val() === "" && field.hasClass('multipart-required')) {
       field.parent().addClass('has-error');
@@ -639,22 +630,15 @@ img#photo {
         field.popover('show');
       }
       return false;
-
-      //Regex patterns
-    } else if (typeof(field.data('pattern')) !== "undefined" && field.data('pattern').length > 0 && !field.val().match(field.data('pattern'))) {
-      field.parent().addClass('has-error');
-      if (showPopover) {
-        field.popover('show');
-      }
-      return false;
+  
     } else if (field.val() !== "") {
       field.parent().addClass('has-success');
     }
     field.popover('hide');
     return true;
   }
-
-
+  
+  
   /**Show task progress.*/
   function showProgress(page, totalPages) {
     var pct = Math.round((page * 100) / totalPages);
@@ -662,14 +646,14 @@ img#photo {
     $("#progress").attr("title", pct.toString() + "% of the task completed!");
     $("#progress").tooltip({'placement': 'bottom'});
   }
-
-
+  
+  
   /**Close alert windows.*/
   $(document).delegate('.close', 'click', function(e) {
     $(this).parent().hide();
   });
-
-
+  
+  
   /**Load the task.*/
   pybossa.taskLoaded(function(task, deferred) {
     if (!$.isEmptyObject(task)) {
@@ -687,33 +671,54 @@ img#photo {
       $("#image_container").hide();
     }
   });
-
-
+  
+  
+  /**Load Select2 controls.*/
+  function loadSelect2Controls() {
+  	$("#country-field").select2({
+      data: countryCodeSequence,
+      theme: "bootstrap",
+      placeholder: "Usually towards the bottom of the card",
+      allowClear: true
+    });
+    $("#language-field").select2({
+      data: languageCodeSequence,
+      theme: "bootstrap",
+      placeholder: "Usually towards the bottom of the card",
+      allowClear: true
+    });
+    $("#additional-language-field").select2({
+      data: languageCodeSequence,
+      theme: "bootstrap",
+      allowClear: true
+    });
+  }
+  
+  
   /**Present the task.*/
   pybossa.presentTask(function(task, deferred) {
-    $("#loading").fadeIn(500);
     if (!$.isEmptyObject(task)) {
-      removeAllClones();
-      clearSubjects();
-      showProgress(1, 7);
-      loadWiki(task);
+      $('.form-step:not(:first)').slideUp();
       $("#last-edited").html('');
       $("#series-title").hide();
       $("#series-num").hide();
       $("#yop-b-group").hide();
-      $('#form-step-7').slideUp();
-      $('#form-step-1').slideDown();
       $('#photo-link').html('').append(task.info.image);
       $("#photo-link").attr("href", task.info.link);
       $('#task-id').html(task.id);
       $("#shelfmark-field").focus();
-      $("#loading").fadeOut(500);
+      
+      removeAllClones();
+      clearSubjects();
+      showProgress(1, 7);
+      loadSelect2Controls();
+      loadWiki(task);
+      $('.form-step:first').slideDown();
       $('.btn-answer').off('click').on('click', function(evt) {
         if (typeof $(this).attr("value") != 'undefined') {
           task.answer = {
             'shelfmark': $("#shelfmark-field").val(),
             'isbn': $("#isbn-field").val(),
-            'language': $('.langauge-field:first').val(),
             'romanised_title': $("#romanised-title-field").val(),
             'title': $("#title-field").val(),
             'romanised_subtitle': $("#romanised-subtitle-field").val(),
@@ -722,43 +727,49 @@ img#photo {
             'pages': $("#pages-field").val(),
             'illustrations': $("#illustrations-field").val(),
             'place_of_publication': $("#pop-field").val(),
+            'country': $("#country-field").val(),
             'publisher': $("#publisher-field").val(),
-            'notes': $("#notes-field").val(),
+            'comments': $("#comments-field").val(),
             'series_title': $("#series-title-field").val(),
             'series_number': $("#series-num-field").val(),
             'publication_year': $("#pubyear-field").val(),
             'normalised_publication_year': $("#norm-pubyear-field").val(),
           }
-
-
-          var multipleLanguages = []
-          $('.langauge-field:not(:first)').each(function() {
-            if ($(this).val().length > 0) {
-              multipleLanguages.push($(this).val().replace(',', ''));
-            }
-          });
-          task.answer.multiple_languages = multipleLanguages.join(',');
-
-
+          
+          var language = $('#language-field').val();
+          if (language == null) {
+          	task.answer.language = "";
+          } else {
+            task.answer.language = language;
+          }
+          
+          var multipleLanguages = $('#additional-language-field').val();
+          if (multipleLanguages == null) {
+            task.answer.multiple_languages = JSON.stringify([]);
+          } else {
+          	task.answer.multiple_languages = JSON.stringify(multipleLanguages);
+          }
+          
           var authors = [];
           $('.author-parent').each(function() {
-            var details = {'author_romanised': $(this).find('.romanised-author-field').val(),
-                           'author_original': $(this).find('.author-field').val(),
-                           'relationship': $(this).find('.author-relationship-field').val(),
+            var details = {'author_romanised': $(this).find('.romanised-author-field').val(), 
+                           'author_original': $(this).find('.author-field').val(), 
+                           'relationship': $(this).find('.author-relationship-field').val(), 
                            'type': $(this).find('.author-type').find('input:checked').val()
                           }
             authors.push(JSON.stringify(details));
           });
           task.answer.authors = '[' + authors.join(', ') + ']';
-
-
+          
+          
           var subjects = [];
           $('.selected-subject').each(function(i) {
             subjects.push($(this).html());
           });
           task.answer.subjects = JSON.stringify(subjects);
-
-
+          
+          console.log(task.answer);
+       
           pybossa.saveTask(task.id, task.answer)
             .done(function() {
               $('#transcription-form').trigger("reset");
@@ -769,18 +780,20 @@ img#photo {
               $('#error-details').html("Error: Answer submission failed");
               $("#error").show();
             });
+          
+          $("#loading").fadeIn(200);
         } else {
           $('#error-details').html("Error: Form submission failed");
           $("#error").show();
         }
       });
-      $("#loading").hide();
+      $("#loading").fadeOut(200);
     } else {
+      $("#loading").fadeOut(200);
       $(".skeleton").hide();
-      $("#loading").hide();
       $("#finish").fadeIn(500);
     }
   });
-
-  pybossa.run('transcribe-a-card');
+  
+  pybossa.run('transcriptiontest');
 </script>
