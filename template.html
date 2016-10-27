@@ -72,6 +72,14 @@
 			</div>
 
 			<div class="form-group">
+			    <label for="script-note-field">Script note:</label>
+			    <span rel="popover" data-content="Add a note about the original script(s) if this would be important to the user."
+				  class="fa fa-question-circle question-popover">
+			    </span>
+			    <input class="form-control" id="script-note-field" placeholder="Add a note about the original script(s) if this would be important to the user." type="text">
+			</div>
+
+			<div class="form-group">
 			    <label for="language-field">Language:</label>
 			    <span rel="popover" data-content="Enter the main language of the item."
 			    class="fa fa-question-circle question-popover"></span>
@@ -91,6 +99,15 @@
 				</span>
 				<select id="additional-language-field" multiple="multiple" style="width: 100%">
 				</select>
+			    </div>
+			    <div class="form-group">
+				<label for="language-note-field">Language note:</label>
+				<span rel="popover"
+				      data-content="If the item contains text in more than one language, enter a note on the languages used in the resource."
+				      class="fa fa-question-circle question-popover">
+				</span>
+				<input class="form-control" id="language-note-field"
+				       placeholder="If the item contains text in more than one language, enter a note on the languages used in the resource." type="text">
 			    </div>
 			</div>
 
@@ -599,6 +616,8 @@
 			'shelfmark': $("#shelfmark-field").val(),
 			'isbn': $("#isbn-field").val(),
 			'language': $('#language-field').val(),
+			'language_note': $('#language-note-field').val(),
+			'script_note': $('#script-note-field').val(),
 			'romanised_title': $("#romanised-title-field").val(),
 			'title': $("#title-field").val(),
 			'romanised_subtitle': $("#romanised-subtitle-field").val(),
