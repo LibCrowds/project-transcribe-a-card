@@ -79,20 +79,23 @@
 			    </select>
 			</div>
 
-			<label class="checkbox-inline">
-			    <input class="hidden-field-checkbox" data-groups='["language"]' id="series" type="checkbox">
-			    This item is written in more than one language
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#language-collapse">
+			    <input type="checkbox"> This item is written in more than one language
 			</label>
-			<div class="form-group margin-top-sm" id="language" style="display:none;">
-			    <label for="additional-language-field">Additional languages:</label>
-			    <span rel="popover" data-content="Enter any additional languages of the item."
-			    class="fa fa-question-circle question-popover"></span>
-			    <select id="additional-language-field" multiple="multiple" style="width: 100%">
-			    </select>
+			<div id="language-collapse" class="collapse">
+			    <br>
+			    <div class="form-group">
+				<label for="additional-language-field">Additional languages:</label>
+				<span rel="popover" data-content="Enter any additional languages of the item."
+				      class="fa fa-question-circle question-popover">
+				</span>
+				<select id="additional-language-field" multiple="multiple" style="width: 100%">
+				</select>
+			    </div>
 			</div>
 
 			<hr>
-			<div class="pull-right-md" role="group">
+			<div class="text-right" role="group">
 			    <a href="#" class="btn btn-success btn-next">Next Step</a>
 			</div>
 		    </div>
@@ -125,7 +128,7 @@
 			</div>
 
 			<hr>
-			<div class="pull-right-md" role="group">
+			<div class="text-right" role="group">
 			    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a>
 			    <a href="#" class="btn btn-success btn-next">Next Step</a>
 			</div>
@@ -178,7 +181,7 @@
 			    </div>
 			</div>
 
-			<div class="pull-right-md" role="group">
+			<div class="text-right" role="group">
 			    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a>
 			    <a href="#" class="btn btn-success btn-next">Next Step</a>
 			</div>
@@ -204,25 +207,27 @@
 			    <input class="form-control" id="illustrations-field" placeholder="Leave blank if number of illustrations  not provided" type="text">
 			</div>
 
-			<label class="checkbox-inline">
-			    <input class="hidden-field-checkbox" data-groups='["series-title", "series-num"]' id="series" type="checkbox">
-			    This item is part of a series
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#series-collapse">
+			    <input type="checkbox"> This item is part of a series
 			</label>
-			<div class="form-group margin-top-sm" id="series-title" style="display:none;">
-			    <label for="series-title-field">Series title:</label>
-			    <span rel="popover" data-content="Transcribe any series title title in romanised form, capitalising only the first letter and any proper nouns."
-			    class="fa fa-question-circle question-popover"></span>
-			    <input class="form-control" id="series-title-field" placeholder="Enter the series to which the item belongs" type="text">
-			</div>
-			<div class="form-group" id="series-num" style="display:none;">
-			    <label for="series-num-field">Number in series:</label>
-			    <span rel="popover" data-content="Transcribe any series numbering, including any designation as given."
-			    class="fa fa-question-circle question-popover"></span>
-			    <input class="form-control" id="series-num-field" placeholder="Enter if the number in the series is given (e.g. Volume 1)" type="text">
+			<div id="series-collapse" class="collapse">
+			    <br>
+			    <div class="form-group" id="series-title">
+				<label for="series-title-field">Series title:</label>
+				<span rel="popover" data-content="Transcribe any series title title in romanised form, capitalising only the first letter and any proper nouns."
+				      class="fa fa-question-circle question-popover"></span>
+				<input class="form-control" id="series-title-field" placeholder="Enter the series to which the item belongs" type="text">
+			    </div>
+			    <div class="form-group" id="series-num">
+				<label for="series-num-field">Number in series:</label>
+				<span rel="popover" data-content="Transcribe any series numbering, including any designation as given."
+				class="fa fa-question-circle question-popover"></span>
+				<input class="form-control" id="series-num-field" placeholder="Enter if the number in the series is given (e.g. Volume 1)" type="text">
+			    </div>
 			</div>
 
 			<hr>
-			<div class="pull-right-md" role="group">
+			<div class="text-right" role="group">
 			    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a>
 			    <a href="#" class="btn btn-success btn-next">Next Step</a>
 			</div>
@@ -255,19 +260,22 @@
 			    class="fa fa-question-circle question-popover"></span>
 			    <input class="form-control input-popover" id="pubyear-field" placeholder="Usually towards the bottom of the card" type="text">
 			</div>
-			<label class="checkbox-inline">
-			    <input class="hidden-field-checkbox" data-groups='["yop-b-group"]' id="non-gregorian" type="checkbox">
-			    The year above does not conform to the Gregorian calendar
+
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#date-collapse">
+			    <input type="checkbox"> The year above does not conform to the Gregorian calendar
 			</label>
-			<div class="form-group margin-top-sm" id="yop-b-group" style="display:none;">
-			    <label for="norm-pubyear-field">Normalised year of publication:</label>
-			    <span rel="popover" data-content='If the year of publication was given in Roman numerals or was in brackets,
-			    supply a four-digit Arabic number with any uncertain digits given as "u".' class="fa fa-question-circle question-popover"></span>
-			    <input class="form-control" id="norm-pubyear-field" placeholder="The Gregorian calendar year should be converted from this and still entered above" type="text">
+			<div id="date-collapse" class="collapse">
+			    <br>
+			    <div class="form-group" id="yop-b">
+				<label for="norm-pubyear-field">Normalised year of publication:</label>
+				<span rel="popover" data-content='If the year of publication was given in Roman numerals or was in brackets,
+				supply a four-digit Arabic number with any uncertain digits given as "u".' class="fa fa-question-circle question-popover"></span>
+				<input class="form-control" id="norm-pubyear-field" placeholder="The Gregorian calendar year should be converted from this and still entered above" type="text">
+			    </div>
 			</div>
 
 			<hr>
-			<div class="pull-right-md" role="group">
+			<div class="text-right" role="group">
 			    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a>
 			    <a href="#" class="btn btn-success btn-next">Next Step</a>
 			</div>
@@ -292,7 +300,7 @@
 			<div class="pull-right"><small id="subject-search-count"></small> suggestions found</div>
 			<div id="subject-search-results" class="padding-top-md"></div>
 			<hr class="padding-top-sm">
-			<div class="pull-right-md" role="group">
+			<div class="text-right" role="group">
 			    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a>
 			    <a href="#" class="btn btn-success btn-next">Next Step</a>
 			</div>
@@ -307,7 +315,7 @@
 			    placeholder="Any other information that could be useful for British Library staff."></textarea>
 			</div>
 			<hr>
-			<div class="pull-right-md" role="group">
+			<div class="text-right" role="group">
 			    <a href="#" class="btn btn-default btn-previous"><span class="fa fa-arrow-left"></span> Previous Step</a>
 			    <a href="#" class="btn btn-success btn-answer" value="Done"><span class="fa fa-thumbs-o-up"></span> Done</a>
 			</div>
@@ -318,7 +326,6 @@
 
         <!-- Feedback items for the user -->
         <div class="padding-top-lg text-center">
-            <p id="last-edited"></p>
             <p>You are working on task: <span class="label label-default" id="task-id">#</span></p>
             <div class="progress progress-striped">
                 <div class="progress-bar" id="progress" rel="tooltip" role="progressbar" style="width: 0%;" title="#"></div>
@@ -479,15 +486,6 @@
     }
 
 
-    /**Show a hidden form field when associated box checked.*/
-    $('.hidden-field-checkbox').on('click', function(evt) {
-	let groups = $(this).data('groups');
-	$.each(groups, function(i, v) {
-	    $('#' + v).slideToggle();
-	});
-    });
-
-
     /**Create a clone.*/
     function cloneInput() {
 	let parent = $(this).parents(".cloned-parent");
@@ -588,10 +586,6 @@
 	    $('#task-id').html(task.id);
 	    $('#transcription-form').trigger("reset");
 	    $('.form-step:not(:first)').slideUp();
-	    $("#last-edited").html('');
-	    $("#series-title").hide();
-	    $("#series-num").hide();
-	    $("#yop-b-group").hide();
 	    $("#shelfmark-field").focus();
 	    $('.form-step:first').slideDown();
 	    removeAllClones();
