@@ -329,72 +329,6 @@
 </div>
 
 <script>
-
-    /** Load the previous task run assoicated with the current task. */
-    function loadWiki(task) {
-	$.ajax({
-	    url: '/api/taskrun',
-	    data: 'task_id=' + task.id,
-	    dataType: 'json'
-	}).done( function(data) {
-	    if (data.length > 0) {
-		var finish_time = data[data.length - 1].finish_time;
-		var date = finish_time.slice(8, 10) + "-" + finish_time.slice(5, 7) + "-" + finish_time.slice(0, 4);
-		var answer = data[data.length - 1].info;
-		$("#last-edited").html('Last edited ' + date);
-		$('#shelfmark-field').val(answer['shelfmark']);
-		$('#isbn-field').val(answer['isbn']);
-		$('#romanised-title-field').val(answer['romanised_title']);
-		$('#title-field').val(answer['title']);
-		$('#romanised-title-field').val(answer['romanised_title']);
-		$('#romanised-subtitle-field').val(answer['romanised_subtitle']);
-		$('#subtitle-field').val(answer['subtitle']);
-		$('#edition-field').val(answer['edition']);
-		$('#pages-field').val(answer['pages']);
-		$('#illustrations-field').val(answer['illustrations']);
-		$('#publisher-field').val(answer['publisher']);
-		$('#comments-field').val(answer['comments']);
-		$('#series-title-field').val(answer['series_title']);
-		$('#series-num-field').val(answer['series_number']);
-		$('#pubyear-field').val(answer['publication_year']);
-		$('#norm-pubyear-field').val(answer['normalised_publication_year']);
-		$('#pop-field').val(answer['place_of_publication']);
-
-		$('#country-field').val(answer['country']).trigger("change");
-		$('#language-field').val(answer['language']).trigger("change");
-		$('#additional-language-field').val(answer['multiple_languages']).trigger("change");
-
-		if(answer['series_title'].length + answer['series_number'].length > 0) {
-		    $("#series").prop('checked', 'checked');
-		    $("#series-title").slideDown();
-		    $("#series-num").slideDown();
-		}
-
-		if(answer['normalised_publication_year'].length > 0) {
-		    $("#non-gregorian").prop('checked', 'checked');
-		    $("#yop-b-group").slideDown();
-		}
-
-		var subjects = $.parseJSON(answer['subjects']);
-		for (var i = 0; i < subjects.length; i++) {
-		    addSubject(subjects[i]);
-		}
-
-		var authors = $.parseJSON(answer['authors']);
-		for (var i in authors) {
-		    if (i > 0) {
-			$('.clone.author-btn').triggerHandler('click');
-		    }
-		    $('.romanised-author-field:last').val(authors[i]['author_romanised']);
-		    $('.author-field:last').val(authors[i]['author_original']);
-		    $('.author-relationship-field:last option[value=' + authors[i]['relationship'] + ']').prop('selected', 'selected');
-		    $('.author-type:last input[value=' + authors[i]['type'] + ']').prop('checked', 'checked');
-		}
-	    }
-	});
-    }
-
-
     /**Select a subject heading.*/
     function addSubject(subject) {
 	$('#selected-subjects').append(`<div class="row subject padding-top-xs padding-bottom-xs">
@@ -669,7 +603,6 @@
 	    clearSubjects();
 	    showProgress(1, 7);
 	    loadSelect2Controls();
-	    loadWiki(task);
 	    $('.form-step:first').slideDown();
 	    $('.btn-answer').off('click').on('click', function(evt) {
 		if (typeof $(this).attr("value") != 'undefined') {
