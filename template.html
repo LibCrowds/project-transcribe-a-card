@@ -103,7 +103,7 @@
 			    <label for="romanised-title-field">Title:</label>
 			    <span rel="popover" data-content="Transcribe the title, capitalising only the first letter of the first word and any proper nouns."
 			    class="fa fa-question-circle question-popover"></span>
-			    <input class="form-control multipart-required input-popover" data-content="Please fill in the title"
+			    <input class="form-control input-popover" data-content="Please fill in the title"
 			    id="romanised-title-field" placeholder="Usually at the top of the card" type="text">
 			</div>
 			<div class="form-group">
@@ -253,7 +253,7 @@
 			    <label for="pubyear-field">Year of publication:</label>
 			    <span rel="popover" data-content='Transcribe the date as given, unless expressed as words (i.e. "1980", not "Nineteen eighty").''
 			    class="fa fa-question-circle question-popover"></span>
-			    <input class="form-control input-popover multipart-required" id="pubyear-field" placeholder="Usually towards the bottom of the card" type="text">
+			    <input class="form-control input-popover" id="pubyear-field" placeholder="Usually towards the bottom of the card" type="text">
 			</div>
 			<label class="checkbox-inline">
 			    <input class="hidden-field-checkbox" data-groups='["yop-b-group"]' id="non-gregorian" type="checkbox">
@@ -289,7 +289,7 @@
 				</span>
 			    </div>
 			</div>
-			<div class="pull-right"><small id="subject-search-count"></small></div>
+			<div class="pull-right"><small id="subject-search-count"></small> suggestions found</div>
 			<div id="subject-search-results" class="padding-top-md"></div>
 			<hr class="padding-top-sm">
 			<div class="pull-right-md" role="group">
@@ -364,7 +364,6 @@
 		$('#language-field').val(answer['language']).trigger("change");
 		$('#additional-language-field').val(answer['multiple_languages']).trigger("change");
 
-
 		if(answer['series_title'].length + answer['series_number'].length > 0) {
 		    $("#series").prop('checked', 'checked');
 		    $("#series-title").slideDown();
@@ -397,52 +396,88 @@
 
 
     /**Select a subject heading.*/
-    function addSubject(elem) {
-	var subject = elem;
-	if (typeof elem !== 'string') {
-	    subject = $($(elem).parents('.subject').children()[0]).html();
-	}
-	var selectedSubjects = $('#selected-subjects').html();
-	selectedSubjects += '<div class="row subject padding-top-xs padding-bottom-xs"><div class="col-xs-8 selected-subject">' + subject
-			  + '</div><div class="col-xs-4"><a class="btn btn-inverse pull-right" onclick="removeSubject(this)">'
-			  + '<span class="fa fa-remove"></span> Remove</a></div></div>';
+    function addSubject(subject) {
+	$('#selected-subjects').append(`<div class="row subject padding-top-xs padding-bottom-xs">
+				       <div class="col-xs-8 selected-subject">${subject}
+				       </div><div class="col-xs-4"><a class="btn btn-inverse pull-right" onclick="removeSubject(this)">
+				       <span class="fa fa-remove"></span> Remove</a></div></div>`);
 	$('#selected-subjects').show();
-	$('#selected-subjects').html(selectedSubjects);
     }
 
 
-    /**Deselect a subject heading.*/
+    /** Remove a subject heading.*/
     function removeSubject(elem) {
-	var subject = $(elem).parents('.subject')[0];
+	let subject = $(elem).parents('.subject')[0];
 	subject.parentElement.removeChild(subject);
     }
 
 
-    /**Perform a subject heading search and load the results.*/
-    $(document).delegate('#subject-search-btn', 'click', function(e) {
-	var query = $('#subject-search-field').val();
-	if (query.length > 0) {
-	    $(this).children('.fa-spin').show();
-	    $(this).children('.fa-search').hide();
-	    $('#subject-search-results').html('');
+    /** Format a subject heading suggestion. */
+    function formatSuggestion(suggestion) {
+	if (suggestion['type'] == 'alt') {
+	    return suggestion['suggestall'] + ' - use ' + suggestion['auth'];
+	}
+	return suggestion['auth'];
+    }
+
+
+    /** Format a subject heading MARC string. */
+    function formatMARCString(suggestion) {
+	let base = suggestion.breaker || suggestion.raw || suggestion.auth;
+	let tag = parseInt(suggestion.tag) + 500;
+	return `${tag}  ${suggestion.indicator}7$a ${base}$2fast$0(OCoLC)${suggestion.idroot}`
+    }
+
+
+    /** Perform a subject heading search and load the results. */
+    function performSearch(query) {
+	let data = {
+	    query: query,
+	    queryIndex: 'suggestall',
+	    queryReturn: 'suggestall,idroot,auth,tag,type,raw,breaker,indicator',
+	    suggest: 'autoSubject'
+	}
+	return new Promise(function(resolve, reject) {
 	    $.ajax({
-		url: 'http://fast.oclc.org/searchfast/fastsuggest',
-		data: 'query=' + query,
+		url: 'https://fast.oclc.org/searchfast/fastsuggest',
+		data: data,
 		dataType: 'jsonp'
 	    }).done(function(data) {
-		var count = data['response']['numFound'];
-		$('#subject-search-count').html(count + ' suggestions found');
-		var suggestions = data['response']['docs'];
+		let count = data['response']['numFound'];
+		let suggestions = data['response']['docs'];
+		$('#subject-search-count').html(count);
 		for (var i = 0; i < suggestions.length; i++) {
-		    $('#subject-search-results').append('<div class="row subject"><div class="col-xs-8">' + suggestions[i]['suggestall'] + '</div><div class="col-xs-4">'
-							+ '<a class="btn btn-inverse pull-right" onclick="addSubject(this)">'
-							+ '<span class="fa fa-plus"></span> Add</a></div></div>');
+		    $('#subject-search-results').append('<div class="row subject"><div class="col-xs-8">' + formatSuggestion(suggestions[i])
+							+ '</div><div class="col-xs-4">'
+							+ '<a class="btn btn-inverse pull-right" onclick="addSubject(&quot;' + formatMARCString(suggestions[i]) + '&quot;)">'
+							+ '<span class="fa fa-plus"></span> Add</a></div></div><br>');
+		    resolve();
 		}
-	    }).always(function(data) {
-		$('#subject-search-btn').children('.fa-spin').hide();
-		$('#subject-search-btn').children('.fa-search').show();
+	    }).fail(function(jqXHR, textStatus) {
+		reject(new Error(textStatus));
 	    });
+	});
+    }
+
+
+    /** Handle click of subject heading search button. */
+    $('#subject-search-btn').on('click', function(evt) {
+	clearSubjects();
+	$(this).children('.fa-spin').show();
+	$(this).children('.fa-search').hide();
+
+	let query = $('#subject-search-field').val();
+	if (query.length == 0) {
+	    return;
 	}
+
+	performSearch(query).catch(function(err) {
+	    pybossaNotify(`Error: Subject search - ${err.message}`, 'danger');
+	    throw err;
+	}).then(() => {
+	    $(this).children('.fa-spin').hide();
+	    $(this).children('.fa-search').show();
+	});
     });
 
 
@@ -450,7 +485,7 @@
     function clearSubjects() {
 	$('#selected-subjects').html('');
         $('#subject-search-results').html('');
-        $('#subject-search-count').html('');
+        $('#subject-search-count').html('0');
     }
 
 
@@ -483,18 +518,16 @@
 
 
     /**Go to the next page.*/
-    $(document).delegate('.btn-next', 'click', function(e) {
-	if (validate()) {
-	    var page = parseInt($('.form-step:visible').data('step'));
-	    changePage(page + 1);
-	}
+    $('.btn-next').on('click', function(evt) {
+	let page = parseInt($('.form-step:visible').data('step'));
+	changePage(page + 1);
     });
 
 
     /**Go to the previous page.*/
-    $(document).delegate('.btn-previous', 'click', function(e) {
-      var page = parseInt($('.form-step:visible').data('step'));
-	  changePage(page - 1);
+    $('.btn-previous').on('click', function(evt) {
+	let page = parseInt($('.form-step:visible').data('step'));
+	changePage(page - 1);
     });
 
 
@@ -512,9 +545,8 @@
 
 
     /**Show a hidden form field when associated box checked.*/
-    $(document).delegate('.hidden-field-checkbox', 'click', function(e) {
-	var groups = $(this).data('groups');
-	$.each(groups, function(i, v) {
+    $('.hidden-field-checkbox').on('click', function(evt) {
+	$(this).data('groups').each(function(i, v) {
 	    $('#' + groups[i]).slideToggle();
 	});
     });
@@ -560,58 +592,6 @@
 		$(this).remove();
 	    });
 	});
-    }
-
-
-    /**Validate fields on focus out.*/
-    $(".form-control").focusout(function() {
-	validateField($(this), false);
-    });
-
-
-    /**Reset field validation on focus in.*/
-    $(".form-control").focusin(function() {
-	clearValidation($(this));
-	$('input').popover('hide');
-    });
-
-
-    /**Clear field validation.*/
-    function clearValidation(field) {
-	field.parent().removeClass('has-error');
-	field.parent().removeClass('has-success');
-    }
-
-
-    /**Validate all visible input fields.*/
-    function validate() {
-	var invalid = false;
-	$('input').filter(':visible').each(function() {
-	    if (!validateField($(this), true)) {
-		invalid = true;
-	    }
-	});
-	return !invalid;
-    }
-
-
-    /**Validate an input field.*/
-    function validateField(field, showPopover) {
-	clearValidation(field);
-
-	//Required fields
-	if (field.val() === "" && field.hasClass('multipart-required')) {
-	    field.parent().addClass('has-error');
-	    if (showPopover) {
-		field.popover('show');
-	    }
-	    return false;
-
-	} else if (field.val() !== "") {
-	    field.parent().addClass('has-success');
-	}
-	field.popover('hide');
-	return true;
     }
 
 
@@ -696,6 +676,7 @@
 		    task.answer = {
 			'shelfmark': $("#shelfmark-field").val(),
 			'isbn': $("#isbn-field").val(),
+			'language': $('#language-field').val(),
 			'romanised_title': $("#romanised-title-field").val(),
 			'title': $("#title-field").val(),
 			'romanised_subtitle': $("#romanised-subtitle-field").val(),
@@ -713,36 +694,25 @@
 			'normalised_publication_year': $("#norm-pubyear-field").val(),
 		    }
 
-		    var language = $('#language-field').val();
-		    if (language == null) {
-			task.answer.language = "";
-		    } else {
-			task.answer.language = language;
+		    task.answer.multiple_languages = "";
+		    if ($('#additional-language-field').val() !== null) {
+			task.answer.multiple_languages = $('#additional-language-field').val().join();
 		    }
 
-		    var multipleLanguages = $('#additional-language-field').val();
-		    if (multipleLanguages == null) {
-			task.answer.multiple_languages = JSON.stringify([]);
-		    } else {
-			task.answer.multiple_languages = JSON.stringify(multipleLanguages);
-		    }
-
-		    var authors = [];
+		    task.answer.authors = [];
 		    $('.author-parent').each(function() {
 			var details = {'author_romanised': $(this).find('.romanised-author-field').val(),
 				       'author_original': $(this).find('.author-field').val(),
 				       'relationship': $(this).find('.author-relationship-field').val(),
 				       'type': $(this).find('.author-type').find('input:checked').val()
 				      }
-			authors.push(JSON.stringify(details));
+			task.answer.authors.push(details);
 		    });
-		    task.answer.authors = '[' + authors.join(', ') + ']';
 
-		    var subjects = [];
+		   task.answer.subjects  = [];
 		    $('.selected-subject').each(function(i) {
-			subjects.push($(this).html());
+			task.answer.subjects.push($(this).html());
 		    });
-		    task.answer.subjects = JSON.stringify(subjects);
 
 		    pybossa.saveTask(task.id, task.answer).done(function() {
 			deferred.resolve();
@@ -760,5 +730,5 @@
 	}
     });
 
-  pybossa.run('transcribe-a-card');
+  pybossa.run('transcriptiontest2');
 </script>
