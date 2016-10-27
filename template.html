@@ -329,18 +329,21 @@
 </div>
 
 <script>
-    /**Select a subject heading.*/
-    function addSubject(subject) {
-	$('#selected-subjects').append(`<div class="row subject padding-top-xs padding-bottom-xs">
-				       <div class="col-xs-8 selected-subject">${subject}
-				       </div><div class="col-xs-4"><a class="btn btn-inverse pull-right" onclick="removeSubject(this)">
-				       <span class="fa fa-remove"></span> Remove</a></div></div>`);
+    /** Select a subject heading. */
+    function selectSubject(subject) {
+	$('#selected-subjects').append(
+	    `<div class="row subject padding-top-xs padding-bottom-xs">
+	    <div class="col-xs-8 selected-subject">${subject}
+	    </div><div class="col-xs-4">
+	    <a class="btn btn-inverse pull-right" onclick="deselectSubject(this)">
+	    <span class="fa fa-remove"></span> Remove</a></div></div>`
+	);
 	$('#selected-subjects').show();
     }
 
 
-    /** Remove a subject heading.*/
-    function removeSubject(elem) {
+    /** Deselect a subject heading. */
+    function deselectSubject(elem) {
 	let subject = $(elem).parents('.subject')[0];
 	subject.parentElement.removeChild(subject);
     }
@@ -348,10 +351,10 @@
 
     /** Format a subject heading suggestion. */
     function formatSuggestion(suggestion) {
-	if (suggestion['type'] == 'alt') {
-	    return suggestion['suggestall'] + ' - use ' + suggestion['auth'];
+	if (suggestion.type == 'alt') {
+	    return suggestion.suggestall + ' - use ' + suggestion.auth;
 	}
-	return suggestion['auth'];
+	return suggestion.auth;
     }
 
 
@@ -359,7 +362,15 @@
     function formatMARCString(suggestion) {
 	let base = suggestion.breaker || suggestion.raw || suggestion.auth;
 	let tag = parseInt(suggestion.tag) + 500;
-	return `${tag}  ${suggestion.indicator}7$a ${base}$2fast$0(OCoLC)${suggestion.idroot}`
+	return `${tag}  ${suggestion.indicator}7$a ${base}$2fast$0(OCoLC)${suggestion.idroot}`;
+    }
+
+
+    /** Clear subject headings. */
+    function clearSubjects() {
+	$('#selected-subjects').html('');
+        $('#subject-search-results').html('');
+        $('#subject-search-count').html('0');
     }
 
 
@@ -370,23 +381,25 @@
 	    queryIndex: 'suggestall',
 	    queryReturn: 'suggestall,idroot,auth,tag,type,raw,breaker,indicator',
 	    suggest: 'autoSubject'
-	}
+	};
 	return new Promise(function(resolve, reject) {
 	    $.ajax({
 		url: 'https://fast.oclc.org/searchfast/fastsuggest',
 		data: data,
 		dataType: 'jsonp'
 	    }).done(function(data) {
-		let count = data['response']['numFound'];
-		let suggestions = data['response']['docs'];
+		let count = data.response.numFound;
+		let suggestions = data.response.docs;
 		$('#subject-search-count').html(count);
-		for (var i = 0; i < suggestions.length; i++) {
-		    $('#subject-search-results').append('<div class="row subject"><div class="col-xs-8">' + formatSuggestion(suggestions[i])
-							+ '</div><div class="col-xs-4">'
-							+ '<a class="btn btn-inverse pull-right" onclick="addSubject(&quot;' + formatMARCString(suggestions[i]) + '&quot;)">'
-							+ '<span class="fa fa-plus"></span> Add</a></div></div><br>');
-		    resolve();
+		for (let suggestion of suggestions) {
+		    $('#subject-search-results').append(
+			`<div class="row subject"><div class="col-xs-8">${formatSuggestion(suggestion)}
+			</div><div class="col-xs-4">
+			<a class="btn btn-inverse pull-right" onclick="selectSubject('${formatMARCString(suggestion)}')>
+			<span class="fa fa-plus"></span> Add</a></div></div><br>`
+		    );
 		}
+		resolve();
 	    }).fail(function(jqXHR, textStatus) {
 		reject(new Error(textStatus));
 	    });
@@ -401,7 +414,7 @@
 	$(this).children('.fa-search').hide();
 
 	let query = $('#subject-search-field').val();
-	if (query.length == 0) {
+	if (query.length === 0) {
 	    return;
 	}
 
@@ -415,20 +428,13 @@
     });
 
 
-    /**Clear subject headings.*/
-    function clearSubjects() {
-	$('#selected-subjects').html('');
-        $('#subject-search-results').html('');
-        $('#subject-search-count').html('0');
-    }
+    /** Key bindings. */
+    $(window).keydown(function(evt) {
+	let page = parseInt($('.form-step:visible').data('step'));
 
-
-    /**Key bindings.*/
-    $(window).keydown(function(e) {
-	var page = parseInt($('.form-step:visible').data('step'));
-	//Enter to search or go to the next page
+	// Hit enter to search or go to the next page
 	if (event.keyCode == 13) {
-	    e.preventDefault();
+	    evt.preventDefault();
 	    if (page == 6) {
 	      $('#subject-search-btn').click();
 	    } else if (page == 7) {
@@ -436,36 +442,31 @@
 	    } else {
 	      changePage(page + 1);
 	    }
-
-	//Shift and delete to go to the previous page
-	} else if (event.shiftKey && event.keyCode == 8 && page > 1) {
-	    e.preventDefault();
-	    changePage(page - 1)
 	}
     });
 
 
-    /**Override default form submission behaviour.*/
+    /** Override default form submission behaviour. */
     $('form').submit(function() {
 	return false;
     });
 
 
-    /**Go to the next page.*/
+    /** Handle next page button click. */
     $('.btn-next').on('click', function(evt) {
 	let page = parseInt($('.form-step:visible').data('step'));
 	changePage(page + 1);
     });
 
 
-    /**Go to the previous page.*/
+    /** Handle previous page button click. */
     $('.btn-previous').on('click', function(evt) {
 	let page = parseInt($('.form-step:visible').data('step'));
 	changePage(page - 1);
     });
 
 
-    /**Move to the next page.*/
+    /** Change page. */
     function changePage(i) {
 	$('.form-step[data-step=' + (i - 1) + ']').slideUp();
 	$('.form-step[data-step=' + (i + 1) + ']').slideUp();
@@ -481,15 +482,15 @@
     /**Show a hidden form field when associated box checked.*/
     $('.hidden-field-checkbox').on('click', function(evt) {
 	$(this).data('groups').each(function(i, v) {
-	    $('#' + groups[i]).slideToggle();
+	    $('#' + v).slideToggle();
 	});
     });
 
 
     /**Create a clone.*/
     function cloneInput() {
-	var parent = $(this).parents(".cloned-parent");
-	var clone = $(parent).find(".cloned-input:last").clone();
+	let parent = $(this).parents(".cloned-parent");
+	let clone = $(parent).find(".cloned-input:last").clone();
 
 	$(clone).find('.cloned-field').each(function(i) {
 	    $(this).val('');
@@ -510,11 +511,12 @@
     }
 
 
+    /** Handle clone button click. */
     $("button.clone").on("click", cloneInput);
 
 
     /**Remove a clone.*/
-    $(document).delegate('button.remove-clone', 'click', function(e) {
+    $('button.remove-clone').on('click', function() {
 	$(this).parents(".cloned-input").remove();
     });
 
@@ -531,26 +533,18 @@
 
     /**Show task progress.*/
     function showProgress(page, totalPages) {
-	var pct = Math.round((page * 100) / totalPages);
+	let pct = Math.round((page * 100) / totalPages);
 	$("#progress").css("width", pct.toString() + "%");
 	$("#progress").attr("title", pct.toString() + "% of the task completed!");
 	$("#progress").tooltip({'placement': 'bottom'});
     }
 
 
-    /**Close alert windows.*/
-    $(document).delegate('.close', 'click', function(e) {
-	$(this).parent().hide();
-    });
-
-
     /**Load the task.*/
     pybossa.taskLoaded(function(task, deferred) {
       if (!$.isEmptyObject(task)) {
-	// load image from flickr
-	var img = $('<img />');
+	let img = $('<img />');
 	img.load(function() {
-	    // continue as soon as the image is loaded
 	    deferred.resolve(task);
 	});
 	img.attr('src', task.info.url_b + "?now=" + new Date().getTime());
@@ -598,12 +592,12 @@
 	    $("#series-num").hide();
 	    $("#yop-b-group").hide();
 	    $("#shelfmark-field").focus();
-
+	    $('.form-step:first').slideDown();
 	    removeAllClones();
 	    clearSubjects();
 	    showProgress(1, 7);
 	    loadSelect2Controls();
-	    $('.form-step:first').slideDown();
+
 	    $('.btn-answer').off('click').on('click', function(evt) {
 		if (typeof $(this).attr("value") != 'undefined') {
 		    task.answer = {
@@ -625,7 +619,7 @@
 			'series_number': $("#series-num-field").val(),
 			'publication_year': $("#pubyear-field").val(),
 			'normalised_publication_year': $("#norm-pubyear-field").val(),
-		    }
+		    };
 
 		    task.answer.multiple_languages = "";
 		    if ($('#additional-language-field').val() !== null) {
@@ -634,11 +628,12 @@
 
 		    task.answer.authors = [];
 		    $('.author-parent').each(function() {
-			var details = {'author_romanised': $(this).find('.romanised-author-field').val(),
-				       'author_original': $(this).find('.author-field').val(),
-				       'relationship': $(this).find('.author-relationship-field').val(),
-				       'type': $(this).find('.author-type').find('input:checked').val()
-				      }
+			var details = {
+			    'author_romanised': $(this).find('.romanised-author-field').val(),
+			    'author_original': $(this).find('.author-field').val(),
+			    'relationship': $(this).find('.author-relationship-field').val(),
+			    'type': $(this).find('.author-type').find('input:checked').val()
+			};
 			task.answer.authors.push(details);
 		    });
 
