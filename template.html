@@ -481,7 +481,8 @@
 
     /**Show a hidden form field when associated box checked.*/
     $('.hidden-field-checkbox').on('click', function(evt) {
-	$(this).data('groups').each(function(i, v) {
+	let groups = $(this).data('groups');
+	$.each(groups, function(i, v) {
 	    $('#' + v).slideToggle();
 	});
     });
