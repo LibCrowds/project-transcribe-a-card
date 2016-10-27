@@ -635,10 +635,10 @@
 			    'relationship': $(this).find('.author-relationship-field').val(),
 			    'type': $(this).find('.author-type').find('input:checked').val()
 			};
-			task.answer.authors.push(details);
+			task.answer.authors.push(JSON.stringify(details));
 		    });
 
-		   task.answer.subjects  = [];
+		    task.answer.subjects  = [];
 		    $('.selected-subject').each(function(i) {
 			task.answer.subjects.push($(this).html());
 		    });
