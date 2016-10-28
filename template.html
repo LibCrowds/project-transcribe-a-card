@@ -510,7 +510,7 @@
 		$("input:visible, textarea:visible").first().focus();
 	    }
 	});
-	showProgress(1, 7);
+	showProgress(i - 1, 7);
     }
 
 
@@ -623,7 +623,7 @@
 	    removeAllClones();
 	    clearSubjects();
 	    populateGuidance();
-	    showProgress(1, 7);
+	    showProgress(0, 7);
 	    loadSelect2Controls();
 
 	    $('.btn-answer').off('click').on('click', function(evt) {
