@@ -42,7 +42,6 @@
 
 <div class="row skeleton">
 
-
     <!-- Image -->
     <div class="col-xs-12 col-sm-6 col-sm-push-6">
 	<div id="image-container">
@@ -58,7 +57,7 @@
                 <h1 id="question">What is this item?</h1>
             </div>
             <div class="col-xs-12 col-sm-4">
-                <a href="../tutorial" id="tutorial-btn" class="btn btn-inverse">
+                <a href="./tutorial" id="tutorial-btn" class="btn btn-inverse">
 		    <span class="fa fa-book"></span> Tutorial
 		</a>
             </div>
@@ -109,24 +108,24 @@
 		    <!-- Page 2 -->
 		    <div class="form-step" data-step="2">
 			<div class="form-group">
-			    <label for="romanised_title">Title:</label>
-			    <input id="romanised_title" class="form-control" type="text">
+			    <label for="title_romanised">Title (Romanised form):</label>
+			    <input id="title_romanised" class="form-control" type="text">
 			</div>
 			<div class="form-group">
-			    <label for="title">Title (non-Roman script):</label>
-			    <input id="title" class="form-control" type="text">
+			    <label for="title_original_script">Title (original script):</label>
+			    <input id="title_original_script" class="form-control" type="text">
 			</div>
 			<div class="form-group">
-			    <label for="romanised_subtitle">Subtitle:</label>
-			    <input id="romanised_subtitle" class="form-control" type="text">
+			    <label for="subtitle_romanised">Subtitle (Romanised form):</label>
+			    <input id="subtitle_romanised" class="form-control" type="text">
 			</div>
 			<div class="form-group">
-			    <label for="subtitle">Subtitle (non-Roman):</label>
-			    <input id="subtitle" class="form-control" type="text">
+			    <label for="subtitle_original_script">Subtitle (original script):</label>
+			    <input id="subtitle_original_script" class="form-control" type="text">
 			</div>
 			<hr>
 			<div class="text-right" role="group">
-			    <button type="button" class="btn btn-default btn-previous">Previous Step</buton>
+			    <button type="button" class="btn btn-default btn-previous">Previous Step</button>
 			    <button type="button" class="btn btn-success btn-next">Next Step</button>
 			</div>
 		    </div>
@@ -137,17 +136,14 @@
 			    <div class="cloned-input author-parent">
 				<div class="form-group">
 				    <label>Author:</label>
-				    <input class="form-control cloned romanised-author" placeholder="Surname, First name" type="text">
+				    <input class="form-control cloned romanised-author" type="text">
 				</div>
 				<div class="form-group">
 				    <label>Author (non-Roman script):</label>
-				    <span rel="popover" data-content="If the author was a romanised version, give the original here (Surname, First name)."
-					class="fa fa-question-circle question-popover"></span>
-				    <input class="form-control cloned author" placeholder="Surname, First name" type="text">
+				    <input class="form-control cloned author" type="text">
 				</div>
 				<div class="form-group">
 				    <label>Relationship to resource:</label>
-				    <span rel="popover" data-content="Select the appropriate designation." class="fa fa-question-circle question-popover"></span>
 				    <select class="form-control author-relationship">
 					<option selected="" value="author">Author</option>
 					<option value="addressee">Addressee</option>
@@ -165,21 +161,29 @@
 				<div class="form-group btn-group author-type">
 				    <label>Type:</label>
 				    <div class="radio">
-					<label><input type="radio" name="authradio" value="personal" checked="checked">Personal author</label>
+					<label>
+					    <input type="radio" name="authradio" value="personal">Personal author
+					</label>
 				    </div>
 				    <div class="radio">
-					<label><input type="radio" name="authradio" value="corporate">Corporate author</label>
+					<label>
+					    <input type="radio" name="authradio" value="corporate">Corporate author
+					</label>
 				    </div>
 				    <div class="radio">
-					<label><input type="radio" name="authradio" value="meeting">Meeting name</label>
+					<label>
+					    <input type="radio" name="authradio" value="meeting">Meeting name
+					</label>
 				    </div>
 				</div>
-				<button class="btn btn-default clone author-btn margin-bottom-md col-xs-12" type="button"><span class="fa fa-plus"></span> Add contributor</button>
+				<button class="btn btn-default clone margin-bottom-md col-xs-12" type="button">
+				    <span class="fa fa-plus"></span> Add contributor
+				</button>
 			    </div>
 			</div>
 
 			<div class="text-right" role="group">
-			    <button type="button" class="btn btn-default btn-previous">Previous Step</buton>
+			    <button type="button" class="btn btn-default btn-previous">Previous Step</button>
 			    <button type="button" class="btn btn-success btn-next">Next Step</button>
 			</div>
 		    </div>
@@ -203,18 +207,18 @@
 			</label>
 			<div id="series-collapse" class="collapse">
 			    <br>
-			    <div class="form-group" id="series_title">
+			    <div class="form-group">
 				<label for="series_title">Series title:</label>
 				<input id="series_title" class="form-control" type="text">
 			    </div>
-			    <div class="form-group" id="series_number">
+			    <div class="form-group">
 				<label for="series_number">Number in series:</label>
 				<input id="series_number" class="form-control" type="text">
 			    </div>
 			</div>
 			<hr>
 			<div class="text-right" role="group">
-			    <button type="button" class="btn btn-default btn-previous">Previous Step</buton>
+			    <button type="button" class="btn btn-default btn-previous">Previous Step</button>
 			    <button type="button" class="btn btn-success btn-next">Next Step</button>
 			</div>
 		    </div>
@@ -226,40 +230,30 @@
 			    <select id="country"></select>
 			</div>
 			<div class="form-group">
-			    <label for="pop">Place of publication:</label>
-			    <span rel="popover" data-content="Transcribe the place of publication as it appears in the source. If more than one place is given, only
-			    the first is required." class="fa fa-question-circle question-popover"></span>
-			    <input class="form-control" id="pop" placeholder="Usually towards the bottom of the card" type="text">
+			    <label for="place_of_publication">Place of publication:</label>
+			    <input id="place_of_publication" class="form-control" type="text">
 			</div>
 			<div class="form-group">
 			    <label for="publisher">Publisher:</label>
-			    <span rel="popover" data-content="Transcribe the publisher's name as it appears in the source. If a name is not given but can be
-			    ascertained from within or outside the resource include it in square brackets." class="fa fa-question-circle question-popover"></span>
-			    <input class="form-control" id="publisher" placeholder="Usually towards the bottom of the card" type="text">
+			    <input id="publisher" class="form-control" type="text">
 			</div>
 			<div class="form-group">
-			    <label for="pubyear">Year of publication:</label>
-			    <span rel="popover" data-content='Transcribe the date as given, unless expressed as words (i.e. "1980", not "Nineteen eighty").''
-			    class="fa fa-question-circle question-popover"></span>
-			    <input class="form-control" id="pubyear" placeholder="Usually towards the bottom of the card" type="text">
+			    <label for="year_of_publication">Year of publication:</label>
+			    <input id="year_of_publication" class="form-control" type="text">
 			</div>
-
 			<label class="checkbox-inline" data-toggle="collapse" data-target="#date-collapse">
 			    <input type="checkbox"> The year above does not conform to the Gregorian calendar
 			</label>
 			<div id="date-collapse" class="collapse">
 			    <br>
-			    <div class="form-group" id="yop-b">
-				<label for="norm-pubyear">Normalised year of publication:</label>
-				<span rel="popover" data-content='If the year of publication was given in Roman numerals or was in brackets,
-				supply a four-digit Arabic number with any uncertain digits given as "u".' class="fa fa-question-circle question-popover"></span>
-				<input class="form-control" id="norm-pubyear" placeholder="The Gregorian calendar year should be converted from this and still entered above" type="text">
+			    <div class="form-group">
+				<label for="normalised_pub_year">Normalised year of publication:</label>
+				<input id="normalised_pub_year" class="form-control" type="text">
 			    </div>
 			</div>
-
 			<hr>
 			<div class="text-right" role="group">
-			    <button type="button" class="btn btn-default btn-previous">Previous Step</buton>
+			    <button type="button" class="btn btn-default btn-previous">Previous Step</button>
 			    <button type="button" class="btn btn-success btn-next">Next Step</button>
 			</div>
 		    </div>
@@ -267,11 +261,10 @@
 		    <!-- Page 6 -->
 		    <div class="form-step" data-step="6">
 			<div class="form-group">
-			    <label>Subject headings:</label>
-			    <span rel="popover" data-content="Use the box below to search for any number of relevent subject headings." class="fa fa-question-circle question-popover"></span>
+			    <label for="subject_search">Subject headings:</label>
 			    <div id="selected-subjects"></div>
 			    <div class="input-group">
-				<input class="form-control" id="subject-search" placeholder="Search for appropriate subject headings" type="text">
+				<input id="subject_search" class="form-control" type="text">
 				<span class="input-group-btn">
 				    <button class="btn btn-default" id="subject-search-btn" type="button">
 					<span class="fa fa-search"></span>
@@ -284,7 +277,7 @@
 			<div id="subject-search-results" class="padding-top-md"></div>
 			<hr class="padding-top-sm">
 			<div class="text-right" role="group">
-			    <button type="button" class="btn btn-default btn-previous">Previous Step</buton>
+			    <button type="button" class="btn btn-default btn-previous">Previous Step</button>
 			    <button type="button" class="btn btn-success btn-next">Next Step</button>
 			</div>
 		    </div>
@@ -297,7 +290,7 @@
 			</div>
 			<hr>
 			<div class="text-right" role="group">
-			    <button type="button" class="btn btn-default btn-previous">Previous Step</buton>
+			    <button type="button" class="btn btn-default btn-previous">Previous Step</button>
 			    <button type="button" class="btn btn-success btn-answer">
 				<span class="fa fa-thumbs-o-up"></span> Done
 			    </button>
@@ -319,25 +312,39 @@
 </div>
 
 <script>
+    /** Add tooltips and placeholders to each field. */
     function populateGuidance() {
 	let guidance = {
-	    shelfmark:            `If the resource or card has a shelfmark transcribe it exactly as given, including
-	                          upper and lower-case letters and any punctuation and spaces.`,
-	    isbn:                 `Record the ISBN if present, omitting any hyphens or spaces. If there is more than one
-				  ISBN, enter the one that most accurately identifies the item.`,
-	    script_note:          `Add a note about the original script(s) if this would be important to the user.`,
-	    language:             `Enter the main language of the item.`,
-	    additional_languages: `If there is more than one language, enter all additional languages.`,
-	    language_note:        `If the item contains text in more than one language, enter a note on the languages
-				  used in the resource.`,
-	    romanised_title:      `Transcribe the title, capitalising only the first letter of the first word and any
-	                          proper nouns.`,
-	    title:                `If the title was a romanised version, give the original here.`,
-	    romanised_subtitle:   `If there is a subtitle, transcribe it here.`,
-	    subtitle:             `If the subtitle was a romanised version, give the original here.`,
+	    shelfmark:                `If the card has a shelfmark transcribe it exactly as given, including upper and`
+				      + ` lower-case letters and any punctuation and spaces.`,
+	    isbn:                     `Record the ISBN if present, omitting any hyphens or spaces. If there is more`
+				      + `than one ISBN, enter the one that most accurately identifies the item.`,
+	    script_note:              `Add a note about the original script(s) if this would be important to the user.`,
+	    language:                 `Enter the main language of the item.`,
+	    additional_languages:     `If there is more than one language, enter all additional languages.`,
+	    language_note:            `If the item contains text in more than one language, enter a note on the`
+				      + ` languages used in the resource.`,
+	    title_romanised:          `Transcribe the title, capitalising only the first letter of the first word and`
+				      + ` any proper nouns.`,
+	    title:                    `If the title was a romanised version, give the original here.`,
+	    subtitle_romanised:       `If there is a subtitle, transcribe it here.`,
+	    subtitle_original_script: `If the subtitle was a romanised version, give the original here.`,
+	    subject_search:           `Search for appropriate subject headings.`,
+	    place_of_publication:     `Transcribe the place of publication as it appears in the source. If more than`
+				      + ` one place is given, only the first is required.`,
+	    publisher:                `Transcribe the publisher's name as it appears in the source. If a name is not`
+	                              + ` given but can be ascertained from within or outside the resource include it`
+				      ` in square brackets.`,
+	    normalised_pub_year:      `If the year of publication was given in Roman numerals or was in brackets,`
+				      + ` supply a four-digit Arabic number with any uncertain digits given as`
+				      + ` &quot;u&quot;. The  Gregorian calendar year should be converted from this and`
+				      + ` still entered above.`,
+	    year_of_publication:      `Transcribe the date as given, unless expressed as words (i.e. &quot;1980&quot;,`
+				      + ` not &quot;Nineteen eighty&quot;).`
 	};
+
 	for (let key in guidance) {
-	    $(`#${key}`).attr('placeholder', guidance[key]);
+	    $(`#${key}`).attr('placeholder', guidance[key].replace('\n', '').trim());
 	    $(`#${key}`).before(`<span data-toggle="popover" data-content="${guidance[key]}"
 				 class="fa fa-question-circle question-popover"></span>`);
 	}
@@ -398,6 +405,7 @@
 	    queryReturn: 'suggestall,idroot,auth,tag,type,raw,breaker,indicator',
 	    suggest: 'autoSubject'
 	};
+
 	return new Promise(function(resolve, reject) {
 	    $.ajax({
 		url: 'https://fast.oclc.org/searchfast/fastsuggest',
@@ -428,7 +436,6 @@
 	clearSubjects();
 	$(this).children('.fa-spin').show();
 	$(this).children('.fa-search').hide();
-
 	let query = $('#subject-search').val();
 	if (query.length === 0) {
 	    return;
@@ -448,7 +455,7 @@
     $(window).keydown(function(evt) {
 	let page = parseInt($('.form-step:visible').data('step'));
 
-	// Hit enter to search or go to the next page
+	// Hit enter to go to the next page (or search subject headings)
 	if (event.keyCode == 13) {
 	    evt.preventDefault();
 	    if (page == 6) {
@@ -570,19 +577,23 @@
 	$("#country").select2({
 	    data: countryCodeSequence,
 	    theme: "bootstrap",
-	    placeholder: "Usually towards the bottom of the card",
-	    allowClear: true
+	    placeholder: $("#country").attr('placeholder'),
+	    allowClear: true,
+	    width: '100%'
 	});
 	$("#language").select2({
 	    data: languageCodeSequence,
 	    theme: "bootstrap",
-	    placeholder: "Usually towards the bottom of the card",
-	    allowClear: true
+	    placeholder: $("#language").attr('placeholder'),
+	    allowClear: true,
+	    width: '100%'
 	});
 	$("#additional_languages").select2({
 	    data: languageCodeSequence,
 	    theme: "bootstrap",
-	    allowClear: true
+	    placeholder: $("#additional_languages").attr('placeholder'),
+	    allowClear: true,
+	    width: '100%'
 	});
     }
 
@@ -599,9 +610,9 @@
 	    $('.form-step:first').slideDown();
 	    removeAllClones();
 	    clearSubjects();
+	    populateGuidance();
 	    showProgress(1, 7);
 	    loadSelect2Controls();
-	    populateGuidance();
 
 	    $('.btn-answer').off('click').on('click', function(evt) {
 		if (typeof $(this).attr("value") != 'undefined') {
@@ -611,21 +622,21 @@
 			'language': $('#language').val(),
 			'language_note': $('#language_note').val(),
 			'script_note': $('#script-note').val(),
-			'romanised_title': $("#romanised_title").val(),
-			'title': $("#title").val(),
-			'romanised_subtitle': $("#romanised_subtitle").val(),
-			'subtitle': $("#subtitle").val(),
+			'title_romanised': $("#title_romanised").val(),
+			'title_original_script': $("#title_original_script").val(),
+			'subtitle_romanised': $("#subtitle_romanised").val(),
+			'subtitle_original_script': $("#subtitle_original_script").val(),
 			'edition': $("#edition").val(),
 			'pages': $("#pages").val(),
 			'illustrations': $("#illustrations").val(),
-			'place_of_publication': $("#pop").val(),
+			'place_of_publication': $("#place_of_publication").val(),
 			'country': $("#country").val(),
 			'publisher': $("#publisher").val(),
 			'comments': $("#comments").val(),
 			'series_title': $("#series_title").val(),
 			'series_number': $("#series_number").val(),
-			'publication_year': $("#pubyear").val(),
-			'normalised_publication_year': $("#norm-pubyear").val(),
+			'year_of_publication': $("#year_of_publication").val(),
+			'normalised_pub_year': $("#normalised_pub_year").val(),
 		    };
 
 		    task.answer.multiple_languages = "";
