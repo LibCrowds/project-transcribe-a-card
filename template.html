@@ -112,8 +112,16 @@
 			    <input id="title_romanised" class="form-control" type="text">
 			</div>
 			<div class="form-group">
+			    <label for="non_filing_romanised">Non-filing characters (Romanised form):</label>
+			    <input id="non_filing_romanised" class="form-control" type="text">
+			</div>
+			<div class="form-group">
 			    <label for="title_original_script">Title (original script):</label>
 			    <input id="title_original_script" class="form-control" type="text">
+			</div>
+			<div class="form-group">
+			    <label for="non_filing_original">Non-filing characters (original script):</label>
+			    <input id="non_filing_original" class="form-control" type="text">
 			</div>
 			<div class="form-group">
 			    <label for="subtitle_romanised">Subtitle (Romanised form):</label>
@@ -326,7 +334,11 @@
 				      + ` languages used in the resource.`,
 	    title_romanised:          `Transcribe the title, capitalising only the first letter of the first word and`
 				      + ` any proper nouns.`,
-	    title:                    `If the title was a romanised version, give the original here.`,
+	    non_filing_romanised:     `If the title begins with an initial article or symbol enter the number of`
+				      + ` letters plus one for any following space`,
+	    title_original_script:    `If the title was a romanised version, give the original here.`,
+	    non_filing_original:      `If the title begins with an initial article or symbol enter the number of`
+				      + ` letters plus one for any following space`,
 	    subtitle_romanised:       `If there is a subtitle, transcribe it here.`,
 	    subtitle_original_script: `If the subtitle was a romanised version, give the original here.`,
 	    subject_search:           `Search for appropriate subject headings.`,
@@ -334,7 +346,7 @@
 				      + ` one place is given, only the first is required.`,
 	    publisher:                `Transcribe the publisher's name as it appears in the source. If a name is not`
 	                              + ` given but can be ascertained from within or outside the resource include it`
-				      ` in square brackets.`,
+				      + ` in square brackets.`,
 	    normalised_pub_year:      `If the year of publication was given in Roman numerals or was in brackets,`
 				      + ` supply a four-digit Arabic number with any uncertain digits given as`
 				      + ` &quot;u&quot;. The  Gregorian calendar year should be converted from this and`
@@ -498,7 +510,7 @@
 		$("input:visible, textarea:visible").first().focus();
 	    }
 	});
-	showProgress(i, 7);
+	showProgress(1, 7);
     }
 
 
@@ -623,7 +635,9 @@
 			'language_note': $('#language_note').val(),
 			'script_note': $('#script-note').val(),
 			'title_romanised': $("#title_romanised").val(),
+			'non_filing_romanised': $("#non_filing_romanised").val(),
 			'title_original_script': $("#title_original_script").val(),
+			'non_filing_original': $("#non_filing_original").val(),
 			'subtitle_romanised': $("#subtitle_romanised").val(),
 			'subtitle_original_script': $("#subtitle_original_script").val(),
 			'edition': $("#edition").val(),
