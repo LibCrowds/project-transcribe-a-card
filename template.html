@@ -116,20 +116,35 @@
 			    <input id="non_filing_romanised" class="form-control" type="text">
 			</div>
 			<div class="form-group">
-			    <label for="title_original_script">Title (original script):</label>
-			    <input id="title_original_script" class="form-control" type="text">
+			    <label for="title_original">Title (original script):</label>
+			    <input id="title_original" class="form-control" type="text">
 			</div>
 			<div class="form-group">
 			    <label for="non_filing_original">Non-filing characters (original script):</label>
 			    <input id="non_filing_original" class="form-control" type="text">
 			</div>
-			<div class="form-group">
-			    <label for="subtitle_romanised">Subtitle (Romanised form):</label>
-			    <input id="subtitle_romanised" class="form-control" type="text">
-			</div>
-			<div class="form-group">
-			    <label for="subtitle_original_script">Subtitle (original script):</label>
-			    <input id="subtitle_original_script" class="form-control" type="text">
+
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#title-collapse">
+			    <input type="checkbox"> The item has a subtitle or a parallel title
+			</label>
+			<div id="title-collapse" class="collapse">
+			    <br>
+			    <div class="form-group">
+				<label for="subtitle_romanised">Subtitle (Romanised form):</label>
+				<input id="subtitle_romanised" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="subtitle_original">Subtitle (original script):</label>
+				<input id="subtitle_original" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="parallel_title_romanised">Parallel title (Romanised form):</label>
+				<input id="parallel_title_romanised" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="parallel_title_original">Parallel title (original script):</label>
+				<input id="parallel_title_original" class="form-control" type="text">
+			    </div>
 			</div>
 			<hr>
 			<div class="text-right" role="group">
@@ -336,11 +351,14 @@
 				      + ` any proper nouns.`,
 	    non_filing_romanised:     `If the title begins with an initial article or symbol enter the number of`
 				      + ` letters plus one for any following space`,
-	    title_original_script:    `If the title was a romanised version, give the original here.`,
+	    title_original:           `If the title was a romanised version, give the original here.`,
 	    non_filing_original:      `If the title begins with an initial article or symbol enter the number of`
 				      + ` letters plus one for any following space`,
 	    subtitle_romanised:       `If there is a subtitle, transcribe it here.`,
-	    subtitle_original_script: `If the subtitle was a romanised version, give the original here.`,
+	    subtitle_original:        `If the subtitle was a romanised version, give the original here.`,
+	    parallel_title_romanised: `Transcribe a parallel title here. If there is more than one, add subsequent`
+				      + ` titles seperated by &quot; = &quot;`,
+	    parallel_title_original:  `If the parallel title was a romanised version, give the original here`,
 	    subject_search:           `Search for appropriate subject headings.`,
 	    place_of_publication:     `Transcribe the place of publication as it appears in the source. If more than`
 				      + ` one place is given, only the first is required.`,
@@ -510,7 +528,7 @@
 		$("input:visible, textarea:visible").first().focus();
 	    }
 	});
-	showProgress(i - 1, 7);
+	showProgress(1, 7);
     }
 
 
@@ -623,7 +641,7 @@
 	    removeAllClones();
 	    clearSubjects();
 	    populateGuidance();
-	    showProgress(0, 7);
+	    showProgress(1, 7);
 	    loadSelect2Controls();
 
 	    $('.btn-answer').off('click').on('click', function(evt) {
@@ -636,10 +654,12 @@
 			'script_note': $('#script-note').val(),
 			'title_romanised': $("#title_romanised").val(),
 			'non_filing_romanised': $("#non_filing_romanised").val(),
-			'title_original_script': $("#title_original_script").val(),
+			'title_original': $("#title_original").val(),
 			'non_filing_original': $("#non_filing_original").val(),
 			'subtitle_romanised': $("#subtitle_romanised").val(),
-			'subtitle_original_script': $("#subtitle_original_script").val(),
+			'subtitle_original': $("#subtitle_original").val(),
+			'parallel_title_original': $("#parallel_title_original").val(),
+			'parallel_title_romanised': $("#parallel_title_romanised").val(),
 			'edition': $("#edition").val(),
 			'pages': $("#pages").val(),
 			'illustrations': $("#illustrations").val(),
