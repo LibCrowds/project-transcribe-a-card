@@ -155,56 +155,49 @@
 
 		    <!-- Page 3 -->
 		    <div class="form-step" data-step="3">
-			<div class="cloned-parent margin-bottom-lg">
-			    <div class="cloned-input author-parent">
-				<div class="form-group">
-				    <label>Author:</label>
-				    <input class="form-control cloned romanised-author" type="text">
-				</div>
-				<div class="form-group">
-				    <label>Author (non-Roman script):</label>
-				    <input class="form-control cloned author" type="text">
-				</div>
-				<div class="form-group">
-				    <label>Relationship to resource:</label>
-				    <select class="form-control author-relationship">
-					<option selected="" value="author">Author</option>
-					<option value="addressee">Addressee</option>
-					<option value="artist">Artist</option>
-					<option value="cartographer">Cartographer</option>
-					<option value="compiler">Compiler</option>
-					<option value="composer">Composer</option>
-					<option value="host_institution">Host Institution</option>
-					<option value="issuing body">Issuing Body</option>
-					<option value="organizer">Organizer</option>
-					<option value="photographer">Photographer</option>
-					<option value="sponsoring body">Sponsoring Body</option>
-				    </select>
-				</div>
-				<div class="form-group btn-group author-type">
-				    <label>Type:</label>
-				    <div class="radio">
-					<label>
-					    <input type="radio" name="authradio" value="personal">Personal author
-					</label>
-				    </div>
-				    <div class="radio">
-					<label>
-					    <input type="radio" name="authradio" value="corporate">Corporate author
-					</label>
-				    </div>
-				    <div class="radio">
-					<label>
-					    <input type="radio" name="authradio" value="meeting">Meeting name
-					</label>
-				    </div>
-				</div>
-				<button class="btn btn-default clone margin-bottom-md col-xs-12" type="button">
-				    <span class="fa fa-plus"></span> Add contributor
-				</button>
+			<div class="form-group">
+			    <label>Author:</label>
+			    <input id="author_romanised" class="form-control" type="text">
+			</div>
+			<div class="form-group">
+			    <label>Author (non-Roman script):</label>
+			    <input id="author_original" class="form-control" type="text">
+			</div>
+			<div class="form-group">
+			    <label>Relationship to resource:</label>
+			    <select id="author_relationship" class="form-control">
+				<option selected="" value="author">Author</option>
+				<option value="addressee">Addressee</option>
+				<option value="artist">Artist</option>
+				<option value="cartographer">Cartographer</option>
+				<option value="compiler">Compiler</option>
+				<option value="composer">Composer</option>
+				<option value="host_institution">Host Institution</option>
+				<option value="issuing body">Issuing Body</option>
+				<option value="organizer">Organizer</option>
+				<option value="photographer">Photographer</option>
+				<option value="sponsoring body">Sponsoring Body</option>
+			    </select>
+			</div>
+			<div class="form-group btn-group">
+			    <label>Type:</label>
+			    <div class="radio">
+				<label>
+				    <input type="radio" name="author_type" value="personal">Personal author
+				</label>
+			    </div>
+			    <div class="radio">
+				<label>
+				    <input type="radio" name="author_type" value="corporate">Corporate author
+				</label>
+			    </div>
+			    <div class="radio">
+				<label>
+				    <input type="radio" name="author_type" value="meeting">Meeting name
+				</label>
 			    </div>
 			</div>
-
+			<hr>
 			<div class="text-right" role="group">
 			    <button type="button" class="btn btn-default btn-previous">Previous Step</button>
 			    <button type="button" class="btn btn-success btn-next">Next Step</button>
@@ -532,50 +525,6 @@
     }
 
 
-    /**Create a clone.*/
-    function cloneInput() {
-	let parent = $(this).parents(".cloned-parent");
-	let clone = $(parent).find(".cloned-input:last").clone();
-
-	$(clone).find('.cloned').each(function(i) {
-	    $(this).val('');
-	    $(this).siblings('.input-group-btn')
-	           .children('.btn')
-		   .removeClass('clone')
-		   .addClass('remove-clone')
-		   .children('.fa')
-		   .addClass('fa-minus')
-		   .removeClass('fa-plus');
-	});
-
-	$(clone).find('.author-type input').each(function() {
-	    $(this).prop('name', 'authradio' + parseInt($('.author-type').length) + 1);
-	});
-	$(clone).appendTo(parent);
-	$(clone).on('click', 'button.clone', cloneInput);
-    }
-
-
-    /** Handle clone button click. */
-    $("button.clone").on("click", cloneInput);
-
-
-    /**Remove a clone.*/
-    $('button.remove-clone').on('click', function() {
-	$(this).parents(".cloned-input").remove();
-    });
-
-
-    /**Remove all cloned fields.*/
-    function removeAllClones() {
-	$(".cloned-parent").each(function() {
-	    $(this).find(".cloned-input:not(:first)").each(function() {
-		$(this).remove();
-	    });
-	});
-    }
-
-
     /**Show task progress.*/
     function showProgress(page, totalPages) {
 	let pct = Math.round((page * 100) / totalPages);
@@ -638,7 +587,6 @@
 	    $('.form-step:not(:first)').slideUp();
 	    $("#shelfmark").focus();
 	    $('.form-step:first').slideDown();
-	    removeAllClones();
 	    clearSubjects();
 	    populateGuidance();
 	    showProgress(1, 7);
@@ -671,6 +619,11 @@
 			'series_number': $("#series_number").val(),
 			'year_of_publication': $("#year_of_publication").val(),
 			'normalised_pub_year': $("#normalised_pub_year").val(),
+			'author_romanised': $('#author_romanised').val(),
+			'author_original': $('#author_original').val(),
+			'author_relationship': $('#author_relationship').val(),
+			'author_original': $('#author_original').val(),
+			'author_type': $('input[name="author_type"]:checked').val()
 		    };
 
 		    task.answer.multiple_languages = "";
@@ -678,21 +631,12 @@
 			task.answer.multiple_languages = $('#additional_languages').val().join();
 		    }
 
-		    task.answer.authors = [];
-		    $('.author-parent').each(function() {
-			var details = {
-			    'author_romanised': $(this).find('.romanised-author').val(),
-			    'author_original': $(this).find('.author').val(),
-			    'relationship': $(this).find('.author-relationship').val(),
-			    'type': $(this).find('.author-type').find('input:checked').val()
-			};
-			task.answer.authors.push(JSON.stringify(details));
-		    });
-
 		    task.answer.subjects  = [];
 		    $('.selected-subject').each(function(i) {
 			task.answer.subjects.push($(this).html());
 		    });
+
+		    console.log(task.answer);
 
 		    pybossa.saveTask(task.id, task.answer).done(function() {
 			deferred.resolve();
