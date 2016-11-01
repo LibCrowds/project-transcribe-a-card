@@ -57,7 +57,7 @@
                 <h1 id="question">What is this item?</h1>
             </div>
             <div class="col-xs-12 col-sm-4">
-                <a href="./tutorial" id="tutorial-btn" class="btn btn-inverse">
+                <a href="../tutorial" id="tutorial-btn" class="btn btn-inverse">
 		    <span class="fa fa-book"></span> Tutorial
 		</a>
             </div>
@@ -91,8 +91,8 @@
 			<div id="language-collapse" class="collapse">
 			    <br>
 			    <div class="form-group">
-				<label for="additional_languages">Additional languages:</label>
-				<select id="additional_languages" multiple="multiple"></select>
+				<label for="multiple_languages">Additional languages:</label>
+				<select id="multiple_languages" multiple="multiple"></select>
 			    </div>
 			    <div class="form-group">
 				<label for="language_note">Language note:</label>
@@ -156,11 +156,11 @@
 		    <!-- Page 3 -->
 		    <div class="form-step" data-step="3">
 			<div class="form-group">
-			    <label>Author:</label>
+			    <label>Author (Romanised form):</label>
 			    <input id="author_romanised" class="form-control" type="text">
 			</div>
 			<div class="form-group">
-			    <label>Author (non-Roman script):</label>
+			    <label>Author (original script):</label>
 			    <input id="author_original" class="form-control" type="text">
 			</div>
 			<div class="form-group">
@@ -207,8 +207,12 @@
 		    <!-- Page 4 -->
 		    <div class="form-step" data-step="4">
 			<div class="form-group">
-			    <label for="edition">Edition:</label>
-			    <input id="edition" class="form-control" type="text">
+			    <label for="edition_romanised">Edition (Romanised form):</label>
+			    <input id="edition_romanised" class="form-control" type="text">
+			</div>
+			<div class="form-group">
+			    <label for="edition_original">Edition (original script):</label>
+			    <input id="edition_original" class="form-control" type="text">
 			</div>
 			<div class="form-group">
 			    <label for="pages">Pages:</label>
@@ -224,12 +228,16 @@
 			<div id="series-collapse" class="collapse">
 			    <br>
 			    <div class="form-group">
-				<label for="series_title">Series title:</label>
-				<input id="series_title" class="form-control" type="text">
+				<label for="series_title_romanised">Series title (Romanised):</label>
+				<input id="series_title_romanised" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
-				<label for="series_number">Number in series:</label>
-				<input id="series_number" class="form-control" type="text">
+				<label for="series_title_original">Series title (original script):</label>
+				<input id="series_title_original" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="number_in_series">Number in series:</label>
+				<input id="number_in_series" class="form-control" type="text">
 			    </div>
 			</div>
 			<hr>
@@ -246,26 +254,28 @@
 			    <select id="country"></select>
 			</div>
 			<div class="form-group">
-			    <label for="place_of_publication">Place of publication:</label>
-			    <input id="place_of_publication" class="form-control" type="text">
+			    <label for="pub_place_romanised">Place of publication (Romanised):</label>
+			    <input id="pub_place_romanised" class="form-control" type="text">
 			</div>
 			<div class="form-group">
-			    <label for="publisher">Publisher:</label>
-			    <input id="publisher" class="form-control" type="text">
+			    <label for="pub_place_original">Place of publication (original script):</label>
+			    <input id="pub_place_original" class="form-control" type="text">
 			</div>
 			<div class="form-group">
-			    <label for="year_of_publication">Year of publication:</label>
-			    <input id="year_of_publication" class="form-control" type="text">
+			    <label for="publisher_romanised">Publisher (Romanised):</label>
+			    <input id="publisher_romanised" class="form-control" type="text">
 			</div>
-			<label class="checkbox-inline" data-toggle="collapse" data-target="#date-collapse">
-			    <input type="checkbox"> The year above does not conform to the Gregorian calendar
-			</label>
-			<div id="date-collapse" class="collapse">
-			    <br>
-			    <div class="form-group">
-				<label for="normalised_pub_year">Normalised year of publication:</label>
-				<input id="normalised_pub_year" class="form-control" type="text">
-			    </div>
+			<div class="form-group">
+			    <label for="publisher_original">Publisher (original script):</label>
+			    <input id="publisher_original" class="form-control" type="text">
+			</div>
+			<div class="form-group">
+			    <label for="date_of_publication">Date of publication:</label>
+			    <input id="date_of_publication" class="form-control" type="text">
+			</div>
+			<div class="form-group">
+			    <label for="norm_date_of_publication">Normalised date of publication:</label>
+			    <input id="norm_date_of_publication" class="form-control" type="text">
 			</div>
 			<hr>
 			<div class="text-right" role="group">
@@ -277,21 +287,26 @@
 		    <!-- Page 6 -->
 		    <div class="form-step" data-step="6">
 			<div class="form-group">
-			    <label for="subject_search">Subject headings:</label>
-			    <div id="selected-subjects"></div>
-			    <div class="input-group">
-				<input id="subject_search" class="form-control" type="text">
-				<span class="input-group-btn">
-				    <button class="btn btn-default" id="subject-search-btn" type="button">
-					<span class="fa fa-search"></span>
-				      <span class="fa fa-refresh fa-spin" style="display:none;"></span>
-				    </button>
-				</span>
-			    </div>
+			    <label for="first_subject">First subject:</label>
+			    <select id="first_subject" class="subject"></select>
 			</div>
-			<div class="pull-right"><small id="subject-search-count"></small> suggestions found</div>
-			<div id="subject-search-results" class="padding-top-md"></div>
-			<hr class="padding-top-sm">
+			<div class="form-group">
+			    <label for="second_subject">Second subject:</label>
+			    <select id="second_subject" class="subject"></select>
+			</div>
+			<div class="form-group">
+			    <label for="third_subject">Third subject:</label>
+			    <select id="third_subject" class="subject"></select>
+			</div>
+			<div class="form-group">
+			    <label for="fourth_subject">Fourth subject:</label>
+			    <select id="fourth_subject" class="subject"></select>
+			</div>
+			<div class="form-group">
+			    <label for="fifth_subject">Fifth subject:</label>
+			    <select id="fifth_subject" class="subject"></select>
+			</div>
+			<hr>
 			<div class="text-right" role="group">
 			    <button type="button" class="btn btn-default btn-previous">Previous Step</button>
 			    <button type="button" class="btn btn-success btn-next">Next Step</button>
@@ -329,7 +344,7 @@
 
 <script>
     /** Add tooltips and placeholders to each field. */
-    function populateGuidance() {
+    (function() {
 	let guidance = {
 	    shelfmark:                `If the card has a shelfmark transcribe it exactly as given, including upper and`
 				      + ` lower-case letters and any punctuation and spaces.`,
@@ -337,7 +352,7 @@
 				      + `than one ISBN, enter the one that most accurately identifies the item.`,
 	    script_note:              `Add a note about the original script(s) if this would be important to the user.`,
 	    language:                 `Enter the main language of the item.`,
-	    additional_languages:     `If there is more than one language, enter all additional languages.`,
+	    multiple_languages:       `If there is more than one language, enter all additional languages.`,
 	    language_note:            `If the item contains text in more than one language, enter a note on the`
 				      + ` languages used in the resource.`,
 	    title_romanised:          `Transcribe the title, capitalising only the first letter of the first word and`
@@ -352,18 +367,41 @@
 	    parallel_title_romanised: `Transcribe a parallel title here. If there is more than one, add subsequent`
 				      + ` titles seperated by &quot; = &quot;`,
 	    parallel_title_original:  `If the parallel title was a romanised version, give the original here`,
-	    subject_search:           `Search for appropriate subject headings.`,
-	    place_of_publication:     `Transcribe the place of publication as it appears in the source. If more than`
+	    pub_place_romanised:      `Transcribe the place of publication as it appears in the source. If more than`
 				      + ` one place is given, only the first is required.`,
-	    publisher:                `Transcribe the publisher's name as it appears in the source. If a name is not`
+	    pub_place_original:       `If the place of publication was a romanised version, give the original here`,
+	    publisher_romanised:      `Transcribe the publisher's name as it appears in the source. If a name is not`
 	                              + ` given but can be ascertained from within or outside the resource include it`
 				      + ` in square brackets.`,
+	    publisher_original:       `If the publisher was a romanised version, give the original here.`,
 	    normalised_pub_year:      `If the year of publication was given in Roman numerals or was in brackets,`
 				      + ` supply a four-digit Arabic number with any uncertain digits given as`
 				      + ` &quot;u&quot;. The  Gregorian calendar year should be converted from this and`
 				      + ` still entered above.`,
-	    year_of_publication:      `Transcribe the date as given, unless expressed as words (i.e. &quot;1980&quot;,`
-				      + ` not &quot;Nineteen eighty&quot;).`
+	    date_of_publication:      `Transcribe the date as given, unless expressed as words (i.e. &quot;1980&quot;,`
+				      + ` not &quot;Nineteen eighty&quot;). Do not convert Roman numbers to Arabic.`,
+	    norm_date_of_publication: `If the date of publication was given in Roman numerals or was in brackets, `
+	                              + ` supply a four-digit Arabic number with any uncertain digits given as`
+				      + ` &quot;u&quot;`,
+	    country:                  `Enter the country of publication.`,
+	    edition_romanised:        `Transcribe any edition statement exactly as it appears.`,
+	    edition_original:         `If the edition was a romanised version, give the original here.`,
+	    pages:                    `Record the number of pages. If cataloguing from a card do not use abbreviations`
+	                              + ` if found: use the term &quot;pages&quot; instead of &quot;p.&quot; or`
+				      + ` &quot;pp.&quot;.`,
+	    illustrations:            `Record any illustrative content. Do not capitalise. If cataloguing from a card`
+	                              + ` do not use abbreviations if found: use the term &quot;illustrations&quot;`
+				      + ` instead of &quot;ill.&quot;.`,
+	    series_title_romanised:   `Transcribe any series title in romanised form, capitalising only the first`
+	                              + ` letter and any proper nouns.`,
+	    series_title_original:    `If the series title was a romanised version, give the original here.`,
+	    number_in_series:         `Transcribe any series numbering, including any designation as given.`,
+	    first_subject:            `Search for an appropriate subject heading`,
+	    second_subject:           `Search for an appropriate subject heading`,
+	    third_subject:            `Search for an appropriate subject heading`,
+	    fourth_subject:           `Search for an appropriate subject heading`,
+	    fifth_subject:            `Search for an appropriate subject heading`,
+	    comments:                 `Please use this column to enter comments for British Library staff.`
 	};
 
 	for (let key in guidance) {
@@ -372,27 +410,64 @@
 				 class="fa fa-question-circle question-popover"></span>`);
 	}
 	$('[data-toggle="popover"]').popover({trigger: "hover"});
-    }
+    })();
 
 
-    /** Select a subject heading. */
-    function selectSubject(subject) {
-	$('#selected-subjects').append(
-	    `<div class="row subject padding-top-xs padding-bottom-xs">
-	    <div class="col-xs-8 selected-subject">${subject}
-	    </div><div class="col-xs-4">
-	    <a class="btn btn-inverse pull-right" onclick="deselectSubject(this)">
-	    <span class="fa fa-remove"></span> Remove</a></div></div>`
-	);
-	$('#selected-subjects').show();
-    }
+    /**Load Select2 controls.*/
+    (function() {
+	$.fn.select2.defaults.set("theme", "bootstrap");
+	$.fn.select2.defaults.set("allowClear", true);
+	$.fn.select2.defaults.set("width", "100%");
 
+	$.getJSON( "https://cdn.rawgit.com/LibCrowds/marc-code-lists/master/index.json", function(json) {
+	    $("#country").select2({
+		data: json.countries,
+		placeholder: $("#country").attr('placeholder'),
+	    });
+	    $("#language").select2({
+		data: json.languages,
+		placeholder: $("#language").attr('placeholder'),
+	    });
+	    $("#multiple_languages").select2({
+		data: json.languages,
+		placeholder: $("#multiple_languages").attr('placeholder'),
+	    });
+	}).fail(function(jqXHR, textStatus) {
+	    pybossaNotify(`Select box error: ${textStatus}`, 'danger');
+	});
 
-    /** Deselect a subject heading. */
-    function deselectSubject(elem) {
-	let subject = $(elem).parents('.subject')[0];
-	subject.parentElement.removeChild(subject);
-    }
+	// Subject data retrieved via AJAX
+	$('.subject').each(function() {
+	    let placeholder = $(this).attr('placeholder');
+	    $(this).select2({
+		placeholder: placeholder,
+		ajax: {
+		    url: 'https://fast.oclc.org/searchfast/fastsuggest',
+		    dataType: 'jsonp',
+		    cache: true,
+		    data: function (params) {
+			return {
+			    query: params.term,
+			    queryIndex: 'suggestall',
+			    queryReturn: 'suggestall,idroot,auth,tag,type,raw,breaker,indicator',
+			    suggest: 'autoSubject'
+			};
+		    },
+		    processResults: function (data, params) {
+			return {
+			    results: $.map( data.response.docs, function (item) {
+				return {
+				    id: formatMARCString(item),
+				    text: formatSuggestion(item),
+				}
+			    })
+			};
+		    },
+		    minimumInputLength: 1,
+		}
+	    });
+	});
+    })();
 
 
     /** Format a subject heading suggestion. */
@@ -412,78 +487,14 @@
     }
 
 
-    /** Clear subject headings. */
-    function clearSubjects() {
-	$('#selected-subjects').html('');
-        $('#subject-search-results').html('');
-        $('#subject-search-count').html('0');
-    }
-
-
-    /** Perform a subject heading search and load the results. */
-    function performSearch(query) {
-	let data = {
-	    query: query,
-	    queryIndex: 'suggestall',
-	    queryReturn: 'suggestall,idroot,auth,tag,type,raw,breaker,indicator',
-	    suggest: 'autoSubject'
-	};
-
-	return new Promise(function(resolve, reject) {
-	    $.ajax({
-		url: 'https://fast.oclc.org/searchfast/fastsuggest',
-		data: data,
-		dataType: 'jsonp'
-	    }).done(function(data) {
-		let count = data.response.numFound;
-		let suggestions = data.response.docs;
-		$('#subject-search-count').html(count);
-		for (let suggestion of suggestions) {
-		    $('#subject-search-results').append(
-			`<div class="row subject"><div class="col-xs-8">${formatSuggestion(suggestion)}
-			</div><div class="col-xs-4">
-			<a class="btn btn-inverse pull-right" onclick="selectSubject('${formatMARCString(suggestion)}')">
-			<span class="fa fa-plus"></span> Add</a></div></div><br>`
-		    );
-		}
-		resolve();
-	    }).fail(function(jqXHR, textStatus) {
-		reject(new Error(textStatus));
-	    });
-	});
-    }
-
-
-    /** Handle click of subject heading search button. */
-    $('#subject-search-btn').on('click', function(evt) {
-	clearSubjects();
-	$(this).children('.fa-spin').show();
-	$(this).children('.fa-search').hide();
-	let query = $('#subject-search').val();
-	if (query.length === 0) {
-	    return;
-	}
-
-	performSearch(query).catch(function(err) {
-	    pybossaNotify(`Error: Subject search - ${err.message}`, 'danger');
-	    throw err;
-	}).then(() => {
-	    $(this).children('.fa-spin').hide();
-	    $(this).children('.fa-search').show();
-	});
-    });
-
-
     /** Key bindings. */
-    $(window).keydown(function(evt) {
+    $(window).on('keydown', function(evt) {
 	let page = parseInt($('.form-step:visible').data('step'));
 
-	// Hit enter to go to the next page (or search subject headings)
+	// Hit enter to go to the next page or submit
 	if (event.keyCode == 13) {
 	    evt.preventDefault();
-	    if (page == 6) {
-	      $('#subject-search-btn').click();
-	    } else if (page == 7) {
+	    if (page == 7) {
 	       $('.btn-answer').triggerHandler('click');
 	    } else {
 	      changePage(page + 1);
@@ -521,7 +532,7 @@
 		$("input:visible, textarea:visible").first().focus();
 	    }
 	});
-	showProgress(1, 7);
+	showProgress(i, 7);
     }
 
 
@@ -536,46 +547,19 @@
 
     /**Load the task.*/
     pybossa.taskLoaded(function(task, deferred) {
-      if (!$.isEmptyObject(task)) {
-	let img = $('<img />');
-	img.load(function() {
-	    deferred.resolve(task);
-	});
-	img.attr('src', task.info.url_b + "?now=" + new Date().getTime());
-	img.addClass('img-thumbnail img-responsive');
-	task.info.image = img;
+	if (!$.isEmptyObject(task)) {
+	    let img = $('<img />');
+	    img.load(function() {
+		deferred.resolve(task);
+	    });
+	    img.attr('src', task.info.url_b + "?now=" + new Date().getTime());
+	    img.addClass('img-thumbnail img-responsive');
+	    task.info.image = img;
 	} else {
 	    deferred.resolve(task);
 	    $("#image_container").hide();
 	}
     });
-
-
-    /**Load Select2 controls.*/
-    function loadSelect2Controls() {
-	$("#country").select2({
-	    data: countryCodeSequence,
-	    theme: "bootstrap",
-	    placeholder: $("#country").attr('placeholder'),
-	    allowClear: true,
-	    width: '100%'
-	});
-	$("#language").select2({
-	    data: languageCodeSequence,
-	    theme: "bootstrap",
-	    placeholder: $("#language").attr('placeholder'),
-	    allowClear: true,
-	    width: '100%'
-	});
-	$("#additional_languages").select2({
-	    data: languageCodeSequence,
-	    theme: "bootstrap",
-	    placeholder: $("#additional_languages").attr('placeholder'),
-	    allowClear: true,
-	    width: '100%'
-	});
-    }
-
 
     /**Present the task.*/
     pybossa.presentTask(function(task, deferred) {
@@ -585,67 +569,63 @@
 	    $('#task-id').html(task.id);
 	    $('#transcription-form').trigger("reset");
 	    $('.form-step:not(:first)').slideUp();
-	    $("#shelfmark").focus();
 	    $('.form-step:first').slideDown();
-	    clearSubjects();
-	    populateGuidance();
 	    showProgress(1, 7);
-	    loadSelect2Controls();
 
 	    $('.btn-answer').off('click').on('click', function(evt) {
 		if (typeof $(this).attr("value") != 'undefined') {
 		    task.answer = {
-			'shelfmark': $("#shelfmark").val(),
-			'isbn': $("#isbn").val(),
-			'language': $('#language').val(),
-			'language_note': $('#language_note').val(),
-			'script_note': $('#script-note').val(),
-			'title_romanised': $("#title_romanised").val(),
-			'non_filing_romanised': $("#non_filing_romanised").val(),
-			'title_original': $("#title_original").val(),
-			'non_filing_original': $("#non_filing_original").val(),
-			'subtitle_romanised': $("#subtitle_romanised").val(),
-			'subtitle_original': $("#subtitle_original").val(),
-			'parallel_title_original': $("#parallel_title_original").val(),
-			'parallel_title_romanised': $("#parallel_title_romanised").val(),
-			'edition': $("#edition").val(),
-			'pages': $("#pages").val(),
-			'illustrations': $("#illustrations").val(),
-			'place_of_publication': $("#place_of_publication").val(),
-			'country': $("#country").val(),
-			'publisher': $("#publisher").val(),
-			'comments': $("#comments").val(),
-			'series_title': $("#series_title").val(),
-			'series_number': $("#series_number").val(),
-			'year_of_publication': $("#year_of_publication").val(),
-			'normalised_pub_year': $("#normalised_pub_year").val(),
-			'author_romanised': $('#author_romanised').val(),
-			'author_original': $('#author_original').val(),
-			'author_relationship': $('#author_relationship').val(),
-			'author_original': $('#author_original').val(),
-			'author_type': $('input[name="author_type"]:checked').val()
+			shelfmark: $("#shelfmark").val(),
+			isbn: $("#isbn").val(),
+			language: $('#language').val(),
+			language_note: $('#language_note').val(),
+			script_note: $('#script-note').val(),
+			multiple_languages: $('#multiple_languages').val().join() ? $('#multiple_languages').val() : "",
+			title_romanised: $("#title_romanised").val(),
+			non_filing_romanised: $("#non_filing_romanised").val(),
+			title_original: $("#title_original").val(),
+			non_filing_original: $("#non_filing_original").val(),
+			subtitle_romanised: $("#subtitle_romanised").val(),
+			subtitle_original: $("#subtitle_original").val(),
+			parallel_title_original: $("#parallel_title_original").val(),
+			parallel_title_romanised: $("#parallel_title_romanised").val(),
+			edition_romanised: $("#edition_romanised").val(),
+			edition_original: $("#edition_original").val(),
+			pages: $("#pages").val(),
+			illustrations: $("#illustrations").val(),
+			pub_place_romanised: $("#pub_place_romanised").val(),
+			pub_place_original: $("#pub_place_original").val(),
+			country: $("#country").val(),
+			publisher_romanised: $("#publisher_romanised").val(),
+			publisher_original: $("#publisher_original").val(),
+			comments: $("#comments").val(),
+			series_title_romanised: $("#series_title_romanised").val(),
+			series_title_original: $("#series_title_original").val(),
+			number_in_series: $("#number_in_series").val(),
+			date_of_publication: $("#date_of_publication").val(),
+			norm_date_of_publication: $("#date_of_publication").val(),
+			author_romanised: $('#author_romanised').val(),
+			author_original: $('#author_original').val(),
+			author_relationship: $('#author_relationship').val(),
+			author_original: $('#author_original').val(),
+			author_type: $('input[name="author_type"]:checked').val(),
+			first_subject: $('#first_subject').val(),
+			second_subject: $('#second_subject').val(),
+			third_subject: $('#third_subject').val(),
+			fourth_subject: $('#fourth_subject').val(),
+			fifth_subject: $('#fifth_subject').val()
 		    };
-
-		    task.answer.multiple_languages = "";
-		    if ($('#additional_languages').val() !== null) {
-			task.answer.multiple_languages = $('#additional_languages').val().join();
-		    }
-
-		    task.answer.subjects  = [];
-		    $('.selected-subject').each(function(i) {
-			task.answer.subjects.push($(this).html());
-		    });
 
 		    console.log(task.answer);
 
-		    pybossa.saveTask(task.id, task.answer).done(function() {
-			deferred.resolve();
-			pybossaNotify('Answer saved!', 'success', true);
-		    }).fail(function(xhr, status, error) {
-			pybossaLogError(new Error(error));
-		    });
+		//    pybossa.saveTask(task.id, task.answer).done(function() {
+		//	deferred.resolve();
+		//	pybossaNotify('Answer saved!', 'success', true);
+		//    }).fail(function(xhr, status, error) {
+		//	pybossaLogError(new Error(error));
+		//    });
 		} else {
-		    pybossaNotify('Error: Answer undefined', 'danger');
+		    pybossaNotify('Submission error: Answer undefined', 'danger');
 		}
 	    });
 	} else {
@@ -654,5 +634,5 @@
 	}
     });
 
-  pybossa.run('transcriptiontest2');
+    pybossa.run('transcriptiontest2');
 </script>
