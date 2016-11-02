@@ -785,12 +785,12 @@
 
 		    console.log(task.answer);
 
-		//    pybossa.saveTask(task.id, task.answer).done(function() {
-		//	deferred.resolve();
-		//	pybossaNotify('Answer saved!', 'success', true);
-		//    }).fail(function(xhr, status, error) {
-		//	pybossaLogError(new Error(error));
-		//    });
+		    pybossa.saveTask(task.id, task.answer).done(function() {
+			deferred.resolve();
+			pybossaNotify('Answer saved!', 'success', true);
+		    }).fail(function(xhr, status, error) {
+			pybossaLogError(new Error(error));
+		    });
 		} else {
 		    pybossaNotify('Submission error: Answer undefined', 'danger');
 		}
