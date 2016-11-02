@@ -155,46 +155,106 @@
 
 		    <!-- Page 3 -->
 		    <div class="form-step" data-step="3">
-			<div class="form-group">
-			    <label>Author (Romanised form):</label>
-			    <input id="author_romanised" class="form-control" type="text">
-			</div>
-			<div class="form-group">
-			    <label>Author (original script):</label>
-			    <input id="author_original" class="form-control" type="text">
-			</div>
-			<div class="form-group">
-			    <label>Relationship to resource:</label>
-			    <select id="author_relationship" class="form-control">
-				<option selected="" value="author">Author</option>
-				<option value="addressee">Addressee</option>
-				<option value="artist">Artist</option>
-				<option value="cartographer">Cartographer</option>
-				<option value="compiler">Compiler</option>
-				<option value="composer">Composer</option>
-				<option value="host_institution">Host Institution</option>
-				<option value="issuing body">Issuing Body</option>
-				<option value="organizer">Organizer</option>
-				<option value="photographer">Photographer</option>
-				<option value="sponsoring body">Sponsoring Body</option>
-			    </select>
-			</div>
 			<div class="form-group btn-group">
-			    <label>Type:</label>
+			    <label for="author_type">Author Type:</label>
 			    <div class="radio">
 				<label>
-				    <input type="radio" name="author_type" value="personal">Personal author
+				    <input type="radio" name="author_type" value="personal" data-toggle="collapse"
+					   data-target="#personal_author_collapse">Personal
 				</label>
 			    </div>
 			    <div class="radio">
 				<label>
-				    <input type="radio" name="author_type" value="corporate">Corporate author
+				    <input type="radio" name="author_type" value="corporate" data-toggle="collapse"
+					   data-target="#corporate_author_collapse">Corporate
 				</label>
 			    </div>
 			    <div class="radio">
 				<label>
-				    <input type="radio" name="author_type" value="meeting">Meeting name
+				    <input type="radio" name="author_type" value="meeting" data-toggle="collapse"
+					   data-target="#meeting_author_collapse">Meeting
 				</label>
+			    </div>
+			</div>
+			<div id="personal_author_collapse" class="collapse">
+			    <div class="form-group">
+				<label for="pers_author_romanised">Personal Author (Romanised):</label>
+				<select id="pers_author_romanised" class="name_authority_file"></select>
+			    </div>
+
+			    <div class="form-group">
+				<label for="pers_author_original">Personal Author (original script):</label>
+				<input id="pers_author_original" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_relationship">Relationship to resource:</label>
+				<select id="pers_author_relationship" class="form-control">
+				    <option selected="" value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host_institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
+			    </div>
+			</div>
+			<div id="corporate_author_collapse" class="collapse">
+			    <div class="form-group">
+				<label for="corp_author_romanised">Corporate Author (Romanised):</label>
+				<select id="corp_author_romanised" class="name_authority_file"></select>
+			    </div>
+
+			    <div class="form-group">
+				<label>Corporate Author (original script):</label>
+				<input id="corp_author_original" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label>Relationship to resource:</label>
+				<select id="corp_author_relationship" class="form-control">
+				    <option selected="" value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host_institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
+			    </div>
+			</div>
+			<div id="meeting_author_collapse" class="collapse">
+			    <div class="form-group">
+				<label for="meet_author_romanised">Meeting Name (Romanised):</label>
+				<select id="meet_author_romanised" class="name_authority_file"></select>
+			    </div>
+
+			    <div class="form-group">
+				<label>Meeting Name (original script):</label>
+				<input id="meet_author_original" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label>Relationship to resource:</label>
+				<select id="meet_author_relationship" class="form-control">
+				    <option selected="" value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host_institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
 			    </div>
 			</div>
 			<hr>
@@ -401,7 +461,22 @@
 	    third_subject:            `Search for an appropriate subject heading`,
 	    fourth_subject:           `Search for an appropriate subject heading`,
 	    fifth_subject:            `Search for an appropriate subject heading`,
-	    comments:                 `Please use this column to enter comments for British Library staff.`
+	    comments:                 `Please use this column to enter comments for British Library staff.`,
+	    pers_author_romanised:    `Search Library of Congress authority files for a personal author. If one can't`
+				      + ` be found you can select your original search term, which will appear at the`
+				      + ` top of the list followed by "(new)".`,
+	    pers_author_original:     `If the personal author was a romanised version, give the original here.`,
+	    pers_author_relationship: `Select the appropriate designation from the dropdown list.`,
+	    corp_author_romanised:    `Search Library of Congress authority files for a corporate author. If one can't`
+				      + ` be found you can select your original search term, which will appear at the`
+				      + ` top of the list followed by "(new)".`,
+	    corp_author_original:     `If the corporate author was a romanised version, give the original here.`,
+	    corp_author_relationship: `Select the appropriate designation from the dropdown list.`,
+	    meet_author_romanised:    `Search Library of Congress authority files for a meeting name. If one can't`
+				      + ` be found you can select your original search term, which will appear at the`
+				      + ` top of the list followed by "(new)".`,
+	    meet_author_original:     `If the meeting name was a romanised version, give the original here.`,
+	    meet_author_relationship: `Select the appropriate designation from the dropdown list.`
 	};
 
 	for (let key in guidance) {
@@ -468,6 +543,90 @@
 	    });
 	});
     })();
+
+
+    // For Z39.50 server config see https://www.loc.gov/z3950/lcserver.html
+    $('.name_authority_file').each(function() {
+	let placeholder = $(this).attr('placeholder');
+	$(this).select2({
+	    tags: true,
+	    tags: true,
+	createTag: function (params) {
+	    return {
+		id: params.term,
+		text: params.term,
+		newOption: true
+	    }
+	},
+	templateResult: function (data) {
+	    let result = $("<span></span>");
+	    result.text(data.text);
+	    if (data.newOption) {
+		result.append(" <em><strong>(new)<strong></em>");
+	    }
+	    return result;
+	},
+	    placeholder: placeholder,
+	    ajax: {
+		url: "https://www.libcrowds.com/z3950/search/lcnaf/json",
+		dataType: 'json',
+		cache: true,
+		data: function (params) {
+		    return {
+			query: '"' + params.term + '"'
+		    };
+		},
+		processResults: function (data, params) {
+		    return {
+			results: $.map( data.data, function (record) {
+			    let option = formatNAF(record);
+			    if (option !== null) {
+				return {
+				    id: option,
+				    text: option,
+				    link: record.fields
+				}
+			    }
+			    return null;
+			})
+		    };
+		},
+		minimumInputLength: 1,
+	    }
+	});
+    });
+
+
+    /** Format a named authority file string. */
+    function formatNAF(record) {
+	let option = {id: "", text: "", link: ""}
+	for (let f of record.fields) {
+	    if ("001" in f) {
+		option.link = f.a;  // LOC control number
+	    } else if ("100" in f) {
+		option.id = option.text = $.map(f["100"].subfields, function(sf) {
+		    return sf[Object.keys(sf)[0]];  // Personal name
+		}).join(' ');
+	    } else if ("110" in f) {
+		option.id = option.text = $.map(f["110"].subfields, function(sf) {
+		    return sf[Object.keys(sf)[0]];  // Corporate name
+		}).join(' ');
+	    } else if ("111" in f) {
+		option.id = option.text = $.map(f["111"].subfields, function(sf) {
+		    return sf[Object.keys(sf)[0]];  // Meeting name
+		}).join(' ');
+	    }
+	}
+	return option ? option.id : null;
+    }
+
+
+    /** Collapse previous selection when author type radio buttons clicked. */
+    $('input[name=author_type]').on('click', function() {
+	$('#personal_author_collapse.in').collapse('toggle');
+	$('#corporate_author_collapse.in').collapse('toggle');
+	$('#meeting_author_collapse.in').collapse('toggle');
+    });
 
 
     /** Format a subject heading suggestion. */
@@ -604,16 +763,20 @@
 			number_in_series: $("#number_in_series").val(),
 			date_of_publication: $("#date_of_publication").val(),
 			norm_date_of_publication: $("#date_of_publication").val(),
-			author_romanised: $('#author_romanised').val(),
-			author_original: $('#author_original').val(),
-			author_relationship: $('#author_relationship').val(),
-			author_original: $('#author_original').val(),
-			author_type: $('input[name="author_type"]:checked').val(),
 			first_subject: $('#first_subject').val(),
 			second_subject: $('#second_subject').val(),
 			third_subject: $('#third_subject').val(),
 			fourth_subject: $('#fourth_subject').val(),
-			fifth_subject: $('#fifth_subject').val()
+			fifth_subject: $('#fifth_subject').val(),
+			pers_author_romanised: $('#pers_author_romanised').val(),
+			pers_author_original: $('#pers_author_original').val(),
+			pers_author_relationship: $('#pers_author_relationship').val(),
+			corp_author_romanised: $('#corp_author_romanised').val(),
+			corp_author_original: $('#corp_author_original').val(),
+			corp_author_relationship: $('#corp_author_relationship').val(),
+			meet_author_romanised: $('#meet_author_romanised').val(),
+			meet_author_original: $('#meet_author_original').val(),
+			meet_author_relationship: $('#meet_author_relationship').val(),
 		    };
 
 		    console.log(task.answer);
