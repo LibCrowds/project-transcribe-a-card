@@ -12,6 +12,10 @@ catalogue record and asked to transcribe the information found on that card.
 The cards will often contain text in non-romanised scripts and therefore require
 specialist language knowledge in order to be correctly transcribed.
 
-You can find more detailed guidance on the [tutorial page](./tutorial), please
-do read through this before starting and refer to it as necessary if you're unsure
-about how any data should be entered into any of the fields.
+While the form is rather long, many of the cards will actually contain very
+little information. You only need to fill in the fields according to what
+information is visible on the card, leaving any other fields blank.
+
+You can find more detailed guidance on the [tutorial page](./tutorial). Please
+read through this before starting and refer to it as necessary if you're unsure
+about how to fill in any of the fields.
