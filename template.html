@@ -123,7 +123,14 @@
 			    <label for="non_filing_original">Non-filing characters (original script):</label>
 			    <input id="non_filing_original" class="form-control" type="text">
 			</div>
-
+			<div class="form-group">
+			    <label for="state_of_res_romanised">Statement of responsibility (Romanised):</label>
+			    <input id="state_of_res_romanised" class="form-control" type="text">
+			</div>
+			<div class="form-group">
+			    <label for="state_of_res_original">Statement of responsibility (original script):</label>
+			    <input id="state_of_res_original" class="form-control" type="text">
+			</div>
 			<label class="checkbox-inline" data-toggle="collapse" data-target="#title-collapse">
 			    <input type="checkbox"> The item has a subtitle or a parallel title
 			</label>
@@ -496,7 +503,11 @@
 				      + ` be found you can select your original search term, which will appear at the`
 				      + ` top of the list followed by "(new)".`,
 	    meet_author_original:     `If the meeting name was a romanised version, give the original here.`,
-	    meet_author_relationship: `Select the appropriate designation from the dropdown list.`
+	    meet_author_relationship: `Select the appropriate designation from the dropdown list.`,
+	    state_of_res_romanised:   `Transcribe a name as given, including any text such as &quot;written by...&quot;`
+				      + ` or &quot;edited by...&quot;`,
+	    state_of_res_original:    `If the statement of responsibility was a romanised version, give the original`
+				      + ` here`,
 	};
 
 	for (let key in guidance) {
@@ -799,6 +810,8 @@
 			meet_author_romanised: $('#meet_author_romanised').val(),
 			meet_author_original: $('#meet_author_original').val(),
 			meet_author_relationship: $('#meet_author_relationship').val(),
+			state_of_res_romanised: $('#state_of_res_romanised').val(),
+			state_of_res_original: $('#state_of_res_original').val(),
 		    };
 
 		    task.answer.multiple_languages = $('#multiple_languages').val() || "";
