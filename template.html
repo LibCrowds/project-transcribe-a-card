@@ -739,7 +739,6 @@
 			language: $('#language').val(),
 			language_note: $('#language_note').val(),
 			script_note: $('#script_note').val(),
-			multiple_languages: $('#multiple_languages').val().join() ? $('#multiple_languages').val() : "",
 			title_romanised: $("#title_romanised").val(),
 			non_filing_romanised: $("#non_filing_romanised").val(),
 			title_original: $("#title_original").val(),
@@ -778,6 +777,11 @@
 			meet_author_original: $('#meet_author_original').val(),
 			meet_author_relationship: $('#meet_author_relationship').val(),
 		    };
+
+		    task.answer.multiple_languages = $('#multiple_languages').val() || "";
+		    if (task.answer.multiple_languages.length) {
+			task.answer.multiple_languages = $('#multiple_languages').val().join();
+		    }
 
 		    console.log(task.answer);
 
