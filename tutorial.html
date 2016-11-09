@@ -1,3 +1,10 @@
+<style>
+    /* Offset for anchors to account for nav bar */
+    h2 {
+        padding-top: 80px;
+        margin-top: -50px;
+    }
+</style>
 <p>This page contains detailed instructions on how to transcribe the information found on each card.</p>
 
 <ul class="list-unstyled">
@@ -10,15 +17,35 @@
     <li><a href="#language-note">Language note</a></li>
     <li><a href="#title">Title</a></li>
     <li><a href="#non-filing">Non-filing characters</a></li>
-    <li><a href="#state-of-res">Statement of responsibility</a></li>
+    <li><a href="#state-of-responsibility">Statement of responsibility</a></li>
+    <li><a href="#notes">Notes</a></li>
+
+    <li><a href="#personal-author">Personal author</a></li>
+    <li><a href="#forename-or-surname">Forename or surname</a></li>
+    <li><a href="#corporate-author">Corporate author</a></li>
+    <li><a href="#jurisdiction">Jurisdiction name or direct order</a></li>
+    <li><a href="#meeting-name">Meeting name</a></li>
+    <li><a href="#relationship-to-resource">Relationship to resource</a></li>
+    <li><a href="#additional-authors">Additional authors</a></li>
+
     <li><a href="#subtitle">Subtitle</a></li>
     <li><a href="#parallel-title">Parallel title</a></li>
+    <li><a href="#edition">Edition</a></li>
+    <li><a href="#pages">Pages</a></li>
+    <li><a href="#illustrations">Illustrations</a></li>
+    <li><a href="#series-title">Series title</a></li>
+    <li><a href="#number-in-series">Number in series</a></li>
+    <li><a href="#country-of-publication">Country of publication</a></li>
+    <li><a href="#place-of-publication">Place of publication</a></li>
+    <li><a href="#publisher">Publisher</a></li>
+    <li><a href="#date-of-publication">Date of publication</a></li>
+    <li><a href="#normalised-date-of-publication">Normalised date of publication</a></li>
+    <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#comments">Comments</a></li>
 </ul>
 
-<h2>General guidance</h2>
 <a name="general-guidance"></a>
-<p>When filling in the form:</p>
-
+<h2>General guidance</h2>
 <ul>
     <li>All fields should be filled in unless there is no relevant information (e.g. no subtitle).</li>
     <li>
@@ -40,26 +67,32 @@
 </ul>
 
 <div class="bs-callout bs-callout-info">
-    <h4>Non-Roman scripts</h4>
+    <h2>Non-Roman scripts</h2>
     <p>
         Inclusion of information in the original script is strongly recommended. When transliterating non-Roman scripts
-        refer to the Library of Congress Romanization Tables:
+        refer to the Library of Congress Romanisation Tables:
     </p>
-    <ul>
-        <li><a href="http://www.loc.gov/catdir/cpso/roman.html">ALA-LC Romanization Tables</a></li>
-        <li><a href="http://www.loc.gov/catdir/cpso/romanization/nonslav.pdf">Non-Slavic Languages (in Cyrillic Script)</a></li>
+    <ul class="list-unstyled">
+        <li>
+            <a href="http://www.loc.gov/catdir/cpso/roman.html" target="_blank">ALA-LC Romanisation Tables</a>
+        </li>
+        <li>
+            <a href="http://www.loc.gov/catdir/cpso/romanization/nonslav.pdf" target="_blank">
+                Non-Slavic Languages (in Cyrillic Script)
+            </a>
+        </li>
     </ul>
 </div>
 
-<h2>Shelfmark</h2>
 <a name="shelfmark"></a>
+<h2>Shelfmark</h2>
 <p>
     If the card has a shelfmark transcribe it exactly as given, including upper and lower-case letters and any
     punctuation and spaces.
 </p>
 
-<h3>ISBN</h3>
 <a name="isbn"></a>
+<h2>ISBN</h2>
 <p>
     Record the ISBN if present, omitting any hyphens or spaces, e.g. 0552675873, not 0-552-67587-3.
 </p>
@@ -68,47 +101,48 @@
     ISBNs are provided, if ISBNs for multiple volume numbers are provided.
 </p>
 
-<h3>Language</h3>
-<a name="language"></a>
-<p>
-    Enter the main language of the resource in the <strong>Language</strong> field (the assoicated language code will be
-    used when the form is submitted).
-</p>
-
-<h4>Additional languages</h4>
-<a name="additional-languages"></a>
-<p>
-    If there is more than one language, click the checkbox indicating that more than one language is present and enter
-    all additional languages in the <strong>Additional Languages</strong> field (the assoicated language codes will be
-    used when the form is submitted).
-</p>
-
-<h4>Language note</h4>
-<a name="language-note"></a>
-<p>
-    If the item contains text in more than one language, enter a note on languages used in the resource in the
-    <strong>Language Note</strong> field.
-</p>
-<p><strong>Examples:</strong></p>
-<ul class="list-unstyled">
-    <li>In Hungarian; summaries in English and French</li>
-    <li>Includes abstracts in English and Russian</li>
-    <li>Parallel Chinese text and English translation</li>
-</ul>
-
-<h4>Script note</h4>
 <a name="script-note"></a>
+<h2>Script note</h2>
 <p>
     Add a note about the original script(s) if this would be important to the user.
 </p>
-<p><strong>Examples:</strong></p>
-<ul class="list-unstyled">
-    <li>Cyrillic and Arabic script</li>
-    <li>Manchu script</li>
-</ul>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>Cyrillic and Arabic script</li>
+        <li>Manchu script</li>
+    </ul>
+</div>
 
-<h3>Title</h3>
+<a name="language"></a>
+<h2>Language</h2>
+<p>
+    Enter the main language of the resource.
+</p>
+
+<a name="additional-languages"></a>
+<h2>Additional languages</h2>
+<p>
+    If there is more than one language, click the checkbox indicating that more than one language is present and enter
+    all additional languages here.
+</p>
+
+<a name="language-note"></a>
+<h2>Language note</h2>
+<p>
+    If the item contains text in more than one language, enter a note on the languages used in the resource.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>In Hungarian; summaries in English and French</li>
+        <li>Includes abstracts in English and Russian</li>
+        <li>Parallel Chinese text and English translation</li>
+    </ul>
+</div>
+
 <a name="title"></a>
+<h2>Title</h2>
 <p>
     Transcribe the title, capitalising only the first letter and any proper nouns, e.g. <i>A child's Christmas in Wales</i>
     (rules vary according to language conventions).
@@ -120,60 +154,381 @@
     Include only the principal title as given on the title page, adding subsequent text in the section as indicated below:
     <ul>
         <li>
-            For a remainder of the title (i.e. Madagascar wildlife : a visitor's guide) see
-            <a href="#subtitle">Subtitle</a>
+            For a remainder of the title (i.e. Madagascar wildlife : <strong>a visitor's guide</strong>) see
+            <a href="#subtitle">Subtitle</a>.
         </li>
         <li>
-            For a parallel title (i.e. Historical review on ancient dams = Revue historique des anciens barrages) see
-            <a href="#parallel-title">Parallel title</a>
+            For a parallel title (i.e. Historical review on ancient dams = <strong>Revue historique des anciens barrages</strong>)
+            see <a href="#parallel-title">Parallel title</a>.
         </li>
         <li>
-            For a statement of responsibility (i.e. Bleak house by Charles Dickens) see
-            <a href="#state-of-res">Statement of responsibility</a>
+            For a statement of responsibility (i.e. Bleak house <strong>by Charles Dickens</strong>) see
+            <a href="#state-of-responsibility">Statement of responsibility</a>.
         </li>
     </ul>
 </p>
 
-<h3>Non-filing characters</h3>
 <a name="non-filing"></a>
+<h2>Non-filing characters</h2>
 <p>
-    If the title begins with a symbol or an initial article enter the number of characters plus one for any following
-    space.
+    If the title begins with a symbol or an initial article enter the number of characters <strong>plus one</strong> for
+    any following space.
 </p>
-<p><strong>Examples:</strong></p>
-<ul class="list-unstyled">
-    <li>A passage to India = 2</li>
-    <li>Les miserables = 4</li>
-</ul>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>A passage to India = 2</li>
+        <li>Les miserables = 4</li>
+    </ul>
+</div>
 
-<h3>Statement of responsibility</h3>
-<a name="state-of-res"></a>
+<a name="state-of-responsibility"></a>
+<h2>Statement of responsibility</h2>
 <p>
-    Transcribe the statement as given, including any text such as "written by..." or "edited by..."
+    Transcribe the statement as given, including any text such as "written by..." or "edited by...".
+</p>
+
+<a name="notes"></a>
+<h2>Notes</h2>
+<p>
+    Enter here any information which is not specifically part of the title, such as a description of the work which is
+    clearly on a card but not on the actual item. If the information on a card is in square brackets it is not necessary
+    to include these. Change double quotes to single quotes.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>Imperfect: wanting pages 99-100</li>
+        <li>Number 20 of a limited edition of 200</li>
+    </ul>
+</div>
+
+<a name="personal-author"></a>
+<h2>Personal author</h2>
+<p>
+    Use the dropdown box to search for and select a personal author. If one can't be found you can select the search
+    term, which will appear at the top of the list followed by <strong>(new)</strong>.
+</p>
+<p>
+    Enter only one author in this field. If others are given enter them in both the
+    <a href="#statement-of-responsiblity">Statement of responsibility</a> and
+    <a href="additional-author">Additional author</a> fields.
+</p>
+
+<a name="forename-or-surname"></a>
+<h3>Forename or surname</h3>
+<p>
+    Select from the drop-down box to indicate either that the name begins with a forename (e.g. Aung San Suu Kyi) or a
+    surname (e.g. Heller, Joseph). For people known by a single name (e.g. Banksy) select forename unless they are known
+    by just their surname (e.g. Morrissey).
+</p>
+
+<a name="corporate-author"></a>
+<h2>Corporate author</h2>
+<p>
+    If the author of the resource is a corporate body (i.e. an association, society etc.) search for the body’s name as
+    with <a href="#personl-author">Personal author</a>.
+</p>
+<p>
+    Please note, the name found may be presented differently on the resource, e.g. Royal Society for the Prevention of
+    Cruelty to Animals, not RSPCA.
+</p>
+<p>
+    If the body’s name is given at the top left corner of the card, record it without brackets.
+</p>
+
+<a name="jurisdiction"></a>
+<h2>Jurisdiction name or direct order</h2>
+<p>
+    Select from the drop-down box to indicate either that the name is structured as a jurisdiction name
+    (e.g. Australia. Department of Defence. Army Office) or is entered in direct order
+    (e.g. Malaysian Society for Microbiology).
+<p>
 
 </p>
 
-<h3>Subtitle</h3>
+<a name="meeting-name"></a>
+<h2>Meeting name</h2>
+<p>
+    If the author of the resource is a conference, congress, symposium etc. search for the meeting's name as
+    with <a href="#personl-author">Personal author</a>.
+
+<a name="relationship-to-resource"></a>
+<h3>Relationship to resource</h3>
+<p>
+    Select the appropriate designation from the drop-down list provided (e.g. author, cartographer, composer). If an
+    appropriate designation is not listed then leave this field blank.
+</p>
+
+<a name="additional-authors"></a>
+<h3>Additional authors</h3>
+<p>
+    For any additional personal authors, corporate authors or meeting names click the relevant checkboxes and enter
+    the additional authors in the fields that appear, following the same rules as above.
+</p>
+
 <a name="subtitle"></a>
+<h2>Subtitle</h2>
 <p>
-    If there is a subtitle, transcribe it in this column.
+    If there is a subtitle, transcribe it here.
 </p>
-<p><strong>Example:</strong></p>
-<ul class="list-unstyled">
-    <li>Twelfth night : <strong>a user's guide</strong></li>
-</ul>
+<div class="bs-callout bs-callout-default">
+    <h4>Example</h4>
+    <ul class="list-unstyled">
+        <li>Twelfth night : <strong>a user's guide</strong></li>
+    </ul>
+</div>
 <p>
-    But note that alternative titles, e.g. Twelfth night, or What you will all belong in the main title.
+    But note that alternative titles, e.g. Twelfth night, <strong>or What you will</strong> all belong in the main title.
 </p>
 
-<h3>Parallel title</h3>
 <a name="parallel-title"></a>
+<h2>Parallel title</h2>
 <p>
-    Transcribe a parallel title in this column. If there is more than one, add subsequent titles separated by " = ".
+    Transcribe a parallel title here. If there is more than one, add subsequent titles separated by " = ".
 </p>
-<p><strong>Example:</strong></p>
-<ul class="list-unstyled">
-    <li>Jahrbuch der Europaischen Gesellschaft fur theologische Forschung von Frauen</li>
-    <li><strong>= Yearbook of the European Society of Women in Theological Research</strong></li>
-    <li><strong>= Annuaire de l'Association europ enne des femmes pour la recherche th ologique</strong></li>
-</ul>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>Jahrbuch der Europaischen Gesellschaft fur theologische Forschung von Frauen</li>
+        <li><strong>= Yearbook of the European Society of Women in Theological Research</strong></li>
+        <li><strong>= Annuaire de l'Association europ enne des femmes pour la recherche th ologique</strong></li>
+    </ul>
+</div>
+
+<a name="edition"></a>
+<h2>Edition</h2>
+<p>
+    Transcribe any edition statement exactly as it appears.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>3rd edition</li>
+        <li>Second revised edition</li>
+    </ul>
+</div>
+
+<a name="pages"></a>
+<h2>Pages</h2>
+<p>
+    Record the number of pages. If cataloguing from a card do not use abbreviations if found: use the term "pages"
+    instead of "p." or "pp.".
+</p>
+<p>
+    Note any different sequences, such as separately numbered introduction, plates and leaves.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>xvii, 323 pages</li>
+        <li>24 pages, 15 pages of plates</li>
+    </ul>
+</div>
+<p>
+    Where the pagination includes square brackets, do not record the brackets but do record the number in the brackets
+    with the phrase "unnumbered" or "unnumbered pages" as appropriate.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>Card says: [4], 87 p.</li>
+        <li>Record as: <strong>4 unnumbered, 87 pages</strong></li>
+        <li>Card says: [945] pp.</li>
+        <li>Record as: <strong>945 unnumbered pages</strong></li>
+    </ul>
+</div>
+
+<a name="illustrations"></a>
+<h2>Illustrations</h2>
+<p>
+    Record any illustrative content found noted on the card. Do not capitalise.
+</p>
+<p>
+    Do not use abbreviations if found: use the term "illustrations" instead of "ill.", "colour" instead of "col.".
+</p>
+<p>
+    Add details about colour in parenthesis. If a catalogue card does not say "col.", assume the illustrations are in
+    black and white.
+</p>
+<p>
+    If a map is specified on the card identify it as such. Portraits, music and other specific types of illustration
+    should all be referred to as "illustrations".
+</p>
+<p>
+    If more than one type of illustration is mentioned then separate with a comma and a space.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>illustrations (black and white)</li>
+        <li>illustrations (colour), maps (black and white)</li>
+        <li>2 maps</li>
+    </ul>
+</div>
+
+<a name="series-title"></a>
+<h2>Series title</h2>
+<p>
+    Transcribe any series title, capitalising only the first letter and any proper nouns.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Example</h4>
+    <ul class="list-unstyled">
+        <li>Cambridge studies in Russian literature</li>
+    </ul>
+</div>
+
+<a name="number-in-series"></a>
+<h2>Number in series</h2>
+<p>
+    Transcribe any series numbering, including any designation as given (e.g. "vol.5", "number 6" etc.).
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Example</h4>
+    <ul class="list-unstyled">
+        <li>Cass series in political violence ; <strong>vol 4</strong></li>
+    </ul>
+</div>
+
+
+<a name="country-of-publication"></a>
+<h2>Country of publication</h2>
+<p>
+    Enter the country of publication.
+</p>
+
+<a name="place-of-publication"></a>
+<h2>Place of publication</h2>
+<p>
+    Transcribe the place of publication as it appears in the source. If more than one place is given, only the first is
+    required.
+</p>
+<p>
+    If a place is not given but can be ascertained from a source within or outside the resource (e.g. from accompanying
+    material, or from a published description of the resource) record this place in square brackets. Information which
+    is considered "probable" should be recorded in square brackets, with the addition of a question mark.
+</p>
+<p>
+    It is acceptable to enter a country name if nothing more precise can be established.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>New York, NY</li>
+        <li>Boston Spa, West Yorkshire</li>
+        <li>[Great Britain]</li>
+        <li>[France?]</li>
+    </ul>
+</div>
+<p>
+    If the given place of publication name is more widely known by another name, transcribe the former as the place of
+    publication and the latter as a note (see <a href="#notes">Notes</a>).
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>Krungthep [place of publication], Published in Bangkok [note].</li>
+    </ul>
+</div>
+
+<a name="publisher"></a>
+<h2>Publisher</h2>
+<p>
+    Transcribe the publisher’s name as it appears in the source.
+</p>
+<p>
+    If a publisher’s name is not given but can be ascertained from a source within or outside the resource
+    (e.g. from accompanying material, from a published description of the resource) record this name in square brackets.
+</p>
+<p>
+    Do <strong>not</strong> enter a "probable" name.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>Prion Books Ltd</li>
+        <li>Emerald Group Publishing Limited</li>
+        <li>[Royal Society of Edinburgh]</li>
+    </ul>
+</div>
+
+<a name="date-of-publication"></a>
+<h2>Date of publication</h2>
+<p>
+    Transcribe the date as given, unless expressed as words (i.e. "1980", not "Nineteen eighty"). Do not convert Roman
+    numbers to Arabic.
+</p>
+<p>
+    If the date of publication appears on the resource in the Gregorian/Julian calendar and another calendar
+    (e.g. Buddhist-Era Thai), enter only the Gregorian/Julian date. If only a non-Gregorian/Julian date is given enter
+    this, followed by the equivalent Gregorian/Julian date in square brackets.
+</p>
+<p>
+    If the only date that can be established is the copyright date then precede the date with the copyright symbol &copy;
+    and no gap.
+</p>
+<p>
+    If a date is not given but can be ascertained from a source within or outside the resource
+    (e.g. from accompanying material, from a published description of the resource) include this date in square brackets.
+    If an approximate date can be established enter it, followed by a question mark, in square brackets. A broader span
+    or description can be entered. Do <strong>not</strong> begin the text with a capital letter.
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>1967</li>
+        <li>&copy;2013</li>
+        <li>Minguo 28 [1939]</li>
+        <li>[2001]</li>
+        <li>[between 1902 and 1905]</li>
+        <li>[1984?]</li>
+        <li>[not before 2005]</li>
+        <li>[not after May 1997]</li>
+        <li>[between 1899 and 1901?]</li>
+    </ul>
+</div>
+
+<a name="normalised-date-of-publication"></a>
+<h2>Normalised date of publication</h2>
+<p>
+    If a precise date in Arabic numerals (e.g. 2010) was given for the date of publication this field can be left blank.
+    If the date was given in Roman numerals or was in brackets, supply a four-digit Arabic number with any uncertain
+    digits given as "u".
+</p>
+<div class="bs-callout bs-callout-default">
+    <h4>Examples</h4>
+    <ul class="list-unstyled">
+        <li>Minguo 28 [1939] = <strong>1939</strong></li>
+        <li>[2001] = <strong>2001</strong></li>
+        <li>[1984?] = <strong>1984</strong></li>
+        <li>[between 1902 and 1905] = <strong>190u</strong></li>
+        <li>[not before 2005] = <strong>20uu</strong></li>
+        <li>[not after May 1997] = <strong>19uu</strong></li>
+        <li>[between 1899 and 1901?] = <strong>1uuu</strong></li>
+        <li>[between 1999 and 2000?] = <strong>uuuu</strong></li>
+    </ul>
+</div>
+
+<a name="subjects"></a>
+<h2>Subjects</h2>
+<p>
+    Use the dropdown boxes to search for subject headings. Provision is made for up to five subjects.
+</p>
+
+<div class="bs-callout bs-callout-default">
+    <h4>Example</h4>
+    For a biography of Charles Mingus you would select:
+    <ul class="list-unstyled">
+        <li><strong>Mingus, Charles, 1922-1979</strong> [Personal name]</li>
+        <li><strong>Jazz musicians</strong> [Topic]</li>
+        <li><strong>Biography</strong> [Form/Genre]</li>
+    </ul>
+</div>
+
+<a name="comments"></a>
+<h2>Comments</h2>
+<p>
+    Please add any comments not intended to be included in the catalogue record, i.e. questions or notes for the
+    attention of BL staff.
+</p>
