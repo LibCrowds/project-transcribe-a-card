@@ -14,6 +14,10 @@
     .form-group.btn-group {
 	width: 100%;
     }
+    .checkbox-inline[data-toggle=collapse] {
+	display: block;
+	margin-bottom: 10px;
+    }
     @media (min-width: 1200px) {
 	#image-container {
 	    width: calc(1170px/2);
@@ -170,7 +174,7 @@
 		    <!-- Page 3 -->
 		    <div class="form-step" data-step="3">
 			<div class="form-group btn-group">
-			    <label for="author_type">Author Type:</label>
+			    <label for="author_type">Main author Type:</label>
 			    <div class="radio">
 				<label>
 				    <input type="radio" name="author_type" value="personal" data-toggle="collapse"
@@ -192,7 +196,7 @@
 			</div>
 			<div id="personal_author_collapse" class="collapse">
 			    <div class="form-group">
-				<label for="pers_author_romanised">Personal Author (romanised form):</label>
+				<label for="pers_author_romanised">Personal author (romanised form):</label>
 				<select id="pers_author_romanised" class="name_authority_file"></select>
 			    </div>
 			    <div class="form-group">
@@ -204,7 +208,7 @@
 				</select>
 			    </div>
 			    <div class="form-group">
-				<label for="pers_author_original">Personal Author (original script):</label>
+				<label for="pers_author_original">Personal author (original script):</label>
 				<input id="pers_author_original" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
@@ -227,11 +231,11 @@
 			</div>
 			<div id="corporate_author_collapse" class="collapse">
 			    <div class="form-group">
-				<label for="corp_author_romanised">Corporate Author (romanised form):</label>
+				<label for="corp_author_romanised">Corporate author (romanised form):</label>
 				<select id="corp_author_romanised" class="name_authority_file"></select>
 			    </div>
 			    <div class="form-group">
-				<label>Corporate Author (original script):</label>
+				<label>Corporate author (original script):</label>
 				<input id="corp_author_original" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
@@ -261,12 +265,11 @@
 			</div>
 			<div id="meeting_author_collapse" class="collapse">
 			    <div class="form-group">
-				<label for="meet_author_romanised">Meeting Name (romanised form):</label>
+				<label for="meet_author_romanised">Meeting name (romanised form):</label>
 				<select id="meet_author_romanised" class="name_authority_file"></select>
 			    </div>
-
 			    <div class="form-group">
-				<label>Meeting Name (original script):</label>
+				<label>Meeting name (original script):</label>
 				<input id="meet_author_original" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
@@ -286,6 +289,264 @@
 				</select>
 			    </div>
 			</div>
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#personal_author_collapse2">
+			    <input type="checkbox"> Specify a second personal author
+			</label>
+			<div id="personal_author_collapse2" class="collapse">
+			    <div class="form-group">
+				<label for="pers_author_romanised2">Personal author (romanised form):</label>
+				<select id="pers_author_romanised2" class="name_authority_file"></select>
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_fore_surname2">Forename or surname:</label>
+				<select id="pers_author_fore_surname2" class="form-control">
+				    <option selected="" value=""></option>
+				    <option value="author">Forename</option>
+				    <option value="Surname">Surname</option>
+				</select>
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_original2">Personal author (original script):</label>
+				<input id="pers_author_original2" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_relationship2">Relationship to resource:</label>
+				<select id="pers_author_relationship2" class="form-control">
+				    <option selected="" value=""></option>
+				    <option value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
+			    </div>
+			</div>
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#personal_author_collapse3">
+			    <input type="checkbox"> Specify a third personal author
+			</label>
+			<div id="personal_author_collapse3" class="collapse">
+			    <div class="form-group">
+				<label for="pers_author_romanised3">Personal author (romanised form):</label>
+				<select id="pers_author_romanised3" class="name_authority_file"></select>
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_fore_surname3">Forename or surname:</label>
+				<select id="pers_author_fore_surname3" class="form-control">
+				    <option selected="" value=""></option>
+				    <option value="author">Forename</option>
+				    <option value="Surname">Surname</option>
+				</select>
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_original3">Personal author (original script):</label>
+				<input id="pers_author_original3" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_relationship3">Relationship to resource:</label>
+				<select id="pers_author_relationship3" class="form-control">
+				    <option selected="" value=""></option>
+				    <option value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
+			    </div>
+			</div>
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#personal_author_collapse4">
+			    <input type="checkbox"> Specify a fourth personal author
+			</label>
+			<div id="personal_author_collapse4" class="collapse">
+			    <div class="form-group">
+				<label for="pers_author_romanised4">Personal author (romanised form):</label>
+				<select id="pers_author_romanised4" class="name_authority_file"></select>
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_fore_surname4">Forename or surname:</label>
+				<select id="pers_author_fore_surname4" class="form-control">
+				    <option selected="" value=""></option>
+				    <option value="author">Forename</option>
+				    <option value="Surname">Surname</option>
+				</select>
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_original4">Personal author (original script):</label>
+				<input id="pers_author_original4" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="pers_author_relationship4">Relationship to resource:</label>
+				<select id="pers_author_relationship4" class="form-control">
+				    <option selected="" value=""></option>
+				    <option value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
+			    </div>
+			</div>
+
+
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#corporate_author_collapse2">
+			    <input type="checkbox"> Specify a second corporate author
+			</label>
+			<div id="corporate_author_collapse2" class="collapse">
+			    <div class="form-group">
+				<label for="corp_author_romanised2">Corporate author (romanised form):</label>
+				<select id="corp_author_romanised2" class="name_authority_file"></select>
+			    </div>
+			    <div class="form-group">
+				<label for="corp_author_original2">Corporate author (original script):</label>
+				<input id="corp_author_original2" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="corp_author_jurisdiction2">Jurisdiction name or direct order:</label>
+				<select id="corp_author_jurisdiction2" class="form-control">
+				     <option selected="" value=""></option>
+				    <option value="Jurisdiction">Jurisdiction</option>
+				    <option value="Direct">Direct</option>
+				</select>
+			    </div>
+			    <div class="form-group">
+				<label for="corp_author_relationship2">Relationship to resource:</label>
+				<select id="corp_author_relationship2" class="form-control">
+				    <option selected="" value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host_institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
+			    </div>
+			</div>
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#corporate_author_collapse3">
+			    <input type="checkbox"> Specify a third corporate author
+			</label>
+			<div id="corporate_author_collapse3" class="collapse">
+			    <div class="form-group">
+				<label for="corp_author_romanised3">Corporate author (romanised form):</label>
+				<select id="corp_author_romanised3" class="name_authority_file"></select>
+			    </div>
+			    <div class="form-group">
+				<label for="corp_author_original3">Corporate author (original script):</label>
+				<input id="corp_author_original3" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="corp_author_jurisdiction3">Jurisdiction name or direct order:</label>
+				<select id="corp_author_jurisdiction3" class="form-control">
+				     <option selected="" value=""></option>
+				    <option value="Jurisdiction">Jurisdiction</option>
+				    <option value="Direct">Direct</option>
+				</select>
+			    </div>
+			    <div class="form-group">
+				<label for="corp_author_relationship3">Relationship to resource:</label>
+				<select id="corp_author_relationship3" class="form-control">
+				    <option selected="" value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host_institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
+			    </div>
+			</div>
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#corporate_author_collapse4">
+			    <input type="checkbox"> Specify a fourth corporate author
+			</label>
+			<div id="corporate_author_collapse4" class="collapse">
+			    <div class="form-group">
+				<label for="corp_author_romanised4">Corporate author (romanised form):</label>
+				<select id="corp_author_romanised4" class="name_authority_file"></select>
+			    </div>
+			    <div class="form-group">
+				<label for="corp_author_original4">Corporate author (original script):</label>
+				<input id="corp_author_original4" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="corp_author_jurisdiction4">Jurisdiction name or direct order:</label>
+				<select id="corp_author_jurisdiction4" class="form-control">
+				     <option selected="" value=""></option>
+				    <option value="Jurisdiction">Jurisdiction</option>
+				    <option value="Direct">Direct</option>
+				</select>
+			    </div>
+			    <div class="form-group">
+				<label for="corp_author_relationship4">Relationship to resource:</label>
+				<select id="corp_author_relationship4" class="form-control">
+				    <option selected="" value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host_institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
+			    </div>
+			</div>
+			<label class="checkbox-inline" data-toggle="collapse" data-target="#meeting_author_collapse2">
+			    <input type="checkbox"> Specify a second meeting name
+			</label>
+			<div id="meeting_author_collapse2" class="collapse">
+			    <br>
+			    <div class="form-group">
+				<label for="meet_author_romanised2">Meeting name (romanised form):</label>
+				<select id="meet_author_romanised2" class="name_authority_file"></select>
+			    </div>
+			    <div class="form-group">
+				<label for="meet_author_original2">Meeting name (original script):</label>
+				<input id="meet_author_original2" class="form-control" type="text">
+			    </div>
+			    <div class="form-group">
+				<label for="meet_author_relationship2">Relationship to resource:</label>
+				<select id="meet_author_relationship2" class="form-control">
+				    <option selected="" value="author">Author</option>
+				    <option value="addressee">Addressee</option>
+				    <option value="artist">Artist</option>
+				    <option value="cartographer">Cartographer</option>
+				    <option value="compiler">Compiler</option>
+				    <option value="composer">Composer</option>
+				    <option value="host_institution">Host Institution</option>
+				    <option value="issuing body">Issuing Body</option>
+				    <option value="organizer">Organizer</option>
+				    <option value="photographer">Photographer</option>
+				    <option value="sponsoring body">Sponsoring Body</option>
+				</select>
+			    </div>
+			</div>
+
 			<hr>
 			<div class="text-right" role="group">
 			    <button type="button" class="btn btn-default btn-previous">Previous Step</button>
@@ -509,8 +770,13 @@
 	    meet_author_romanised:    `Search Library of Congress authority files for a meeting name. If one can't`
 				      + ` be found you can select your original search term, which will appear at the`
 				      + ` top of the list followed by "(new)".`,
+	    meet_author_romanised2:   `Search Library of Congress authority files for a meeting name. If one can't`
+				      + ` be found you can select your original search term, which will appear at the`
+				      + ` top of the list followed by "(new)".`,
 	    meet_author_original:     `If the meeting name was a romanised version, give the original here.`,
+	    meet_author_original2:    `If the meeting name was a romanised version, give the original here.`,
 	    meet_author_relationship: `Select the appropriate designation from the dropdown list.`,
+	    meet_author_relationship2:`Select the appropriate designation from the dropdown list.`,
 	    state_of_res_romanised:   `Transcribe a name as given, including any text such as &quot;written by...&quot;`
 				      + ` or &quot;edited by...&quot;.`,
 	    state_of_res_original:    `If the statement of responsibility was a romanised version, give the original`
@@ -812,13 +1078,40 @@
 			pers_author_original: $('#pers_author_original').val(),
 			pers_author_relationship: $('#pers_author_relationship').val(),
 			pers_author_fore_surname: $('#pers_author_fore_surname').val(),
+			pers_author_romanised2: $('#pers_author_romanised2').val(),
+			pers_author_original2: $('#pers_author_original2').val(),
+			pers_author_relationship2: $('#pers_author_relationship2').val(),
+			pers_author_fore_surname2: $('#pers_author_fore_surname2').val(),
+			pers_author_romanised3: $('#pers_author_romanised3').val(),
+			pers_author_original3: $('#pers_author_original3').val(),
+			pers_author_relationship3: $('#pers_author_relationship3').val(),
+			pers_author_fore_surname3: $('#pers_author_fore_surname3').val(),
+			pers_author_romanised4: $('#pers_author_romanised4').val(),
+			pers_author_original4: $('#pers_author_original4').val(),
+			pers_author_relationship4: $('#pers_author_relationship4').val(),
+			pers_author_fore_surname4: $('#pers_author_fore_surname4').val(),
 			corp_author_romanised: $('#corp_author_romanised').val(),
 			corp_author_original: $('#corp_author_original').val(),
 			corp_author_jurisdiction: $('#corp_author_jurisdiction').val(),
 			corp_author_relationship: $('#corp_author_relationship').val(),
+			corp_author_romanised2: $('#corp_author_romanised2').val(),
+			corp_author_original2: $('#corp_author_original2').val(),
+			corp_author_jurisdiction2: $('#corp_author_jurisdiction2').val(),
+			corp_author_relationship2: $('#corp_author_relationship2').val(),
+			corp_author_romanised3: $('#corp_author_romanised3').val(),
+			corp_author_original3: $('#corp_author_original3').val(),
+			corp_author_jurisdiction3: $('#corp_author_jurisdiction3').val(),
+			corp_author_relationship3: $('#corp_author_relationship3').val(),
+			corp_author_romanised4: $('#corp_author_romanised4').val(),
+			corp_author_original4: $('#corp_author_original4').val(),
+			corp_author_jurisdiction4: $('#corp_author_jurisdiction4').val(),
+			corp_author_relationship4: $('#corp_author_relationship4').val(),
 			meet_author_romanised: $('#meet_author_romanised').val(),
 			meet_author_original: $('#meet_author_original').val(),
 			meet_author_relationship: $('#meet_author_relationship').val(),
+			meet_author_romanised2: $('#meet_author_romanised2').val(),
+			meet_author_original2: $('#meet_author_original2').val(),
+			meet_author_relationship2: $('#meet_author_relationship2').val(),
 			state_of_res_romanised: $('#state_of_res_romanised').val(),
 			state_of_res_original: $('#state_of_res_original').val(),
 			notes: $('#notes').val()
