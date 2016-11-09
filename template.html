@@ -131,6 +131,10 @@
 			    <label for="state_of_res_original">Statement of responsibility (original script):</label>
 			    <input id="state_of_res_original" class="form-control" type="text">
 			</div>
+			<div class="form-group">
+			    <label for="notes">Notes:</label>
+			    <input id="notes" class="form-control" type="text">
+			</div>
 			<label class="checkbox-inline" data-toggle="collapse" data-target="#title-collapse">
 			    <input type="checkbox"> The item has a subtitle or a parallel title
 			</label>
@@ -505,9 +509,10 @@
 	    meet_author_original:     `If the meeting name was a romanised version, give the original here.`,
 	    meet_author_relationship: `Select the appropriate designation from the dropdown list.`,
 	    state_of_res_romanised:   `Transcribe a name as given, including any text such as &quot;written by...&quot;`
-				      + ` or &quot;edited by...&quot;`,
+				      + ` or &quot;edited by...&quot;.`,
 	    state_of_res_original:    `If the statement of responsibility was a romanised version, give the original`
-				      + ` here`
+				      + ` here.`,
+	    notes:		      `For damaged item notes, limited editions, items noted as donated/formerly owned.`
 	};
 
 	for (let key in guidance) {
@@ -811,7 +816,8 @@
 			meet_author_original: $('#meet_author_original').val(),
 			meet_author_relationship: $('#meet_author_relationship').val(),
 			state_of_res_romanised: $('#state_of_res_romanised').val(),
-			state_of_res_original: $('#state_of_res_original').val()
+			state_of_res_original: $('#state_of_res_original').val(),
+			notes: $('#notes').val()
 		    };
 
 		    task.answer.multiple_languages = $('#multiple_languages').val() || "";
