@@ -11,6 +11,9 @@
     .form-step {
 	display: none;
     }
+    .form-group.btn-group {
+	width: 100%;
+    }
     @media (min-width: 1200px) {
 	#image-container {
 	    width: calc(1170px/2);
@@ -512,13 +515,14 @@
 				      + ` or &quot;edited by...&quot;.`,
 	    state_of_res_original:    `If the statement of responsibility was a romanised version, give the original`
 				      + ` here.`,
-	    notes:		      `For damaged item notes, limited editions, items noted as donated/formerly owned.`
+	    notes:		      `For damaged item notes, limited editions, items noted as donated etc.`,
+	    author_type:              `Select the type of the main author.`
 	};
 
 	for (let key in guidance) {
 	    let text = guidance[key].replace('\n', '').trim();
 	    $(`#${key}`).attr('placeholder', text);
-	    $(`#${key}`).before(`<span data-toggle="popover" data-content="${text}" class="fa fa-question-circle">
+	    $(`label[for="${key}"`).after(` <span data-toggle="popover" data-content="${text}" class="fa fa-question-circle">
 				</span>`);
 	}
 	$('[data-toggle="popover"]').popover({trigger: "hover"});
