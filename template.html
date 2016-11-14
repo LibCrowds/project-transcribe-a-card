@@ -852,7 +852,7 @@
 
 	$.getJSON( "https://cdn.rawgit.com/LibCrowds/marc-code-lists/master/countries.json", function(json) {
 	    $("#country").select2({
-		data: json.countries,
+		data: json,
 		placeholder: $("#country").attr('placeholder'),
 	    });
 	}).fail(function(jqXHR, textStatus) {
@@ -861,11 +861,11 @@
 
 	$.getJSON( "https://cdn.rawgit.com/LibCrowds/marc-code-lists/master/languages.json", function(json) {
 	    $("#language").select2({
-		data: json.languages,
+		data: json,
 		placeholder: $("#language").attr('placeholder'),
 	    });
 	    $("#multiple_languages").select2({
-		data: json.languages,
+		data: json,
 		placeholder: $("#multiple_languages").attr('placeholder'),
 	    });
 	}).fail(function(jqXHR, textStatus) {
