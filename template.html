@@ -197,7 +197,7 @@
 			<div id="personal_author_collapse" class="collapse">
 			    <div class="form-group">
 				<label for="pers_author_romanised">Personal author (romanised form):</label>
-				<select id="pers_author_romanised" class="name_authority_file"></select>
+				<input id="pers_author_romanised" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label for="pers_author_fore_surname">Forename or surname:</label>
@@ -232,7 +232,7 @@
 			<div id="corporate_author_collapse" class="collapse">
 			    <div class="form-group">
 				<label for="corp_author_romanised">Corporate author (romanised form):</label>
-				<select id="corp_author_romanised" class="name_authority_file"></select>
+				<input id="pers_author_romanised" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label>Corporate author (original script):</label>
@@ -267,7 +267,7 @@
 			<div id="meeting_author_collapse" class="collapse">
 			    <div class="form-group">
 				<label for="meet_author_romanised">Meeting name (romanised form):</label>
-				<select id="meet_author_romanised" class="name_authority_file"></select>
+				<input id="meet_author_romanised" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label>Meeting name (original script):</label>
@@ -297,7 +297,7 @@
 			<div id="personal_author_collapse2" class="collapse">
 			    <div class="form-group">
 				<label for="pers_author_romanised2">Personal author (romanised form):</label>
-				<select id="pers_author_romanised2" class="name_authority_file"></select>
+				<input id="pers_author_romanised2" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label for="pers_author_fore_surname2">Forename or surname:</label>
@@ -335,7 +335,7 @@
 			<div id="personal_author_collapse3" class="collapse">
 			    <div class="form-group">
 				<label for="pers_author_romanised3">Personal author (romanised form):</label>
-				<select id="pers_author_romanised3" class="name_authority_file"></select>
+				<input id="pers_author_romanised3" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label for="pers_author_fore_surname3">Forename or surname:</label>
@@ -373,7 +373,7 @@
 			<div id="personal_author_collapse4" class="collapse">
 			    <div class="form-group">
 				<label for="pers_author_romanised4">Personal author (romanised form):</label>
-				<select id="pers_author_romanised4" class="name_authority_file"></select>
+				<input id="pers_author_romanised4" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label for="pers_author_fore_surname4">Forename or surname:</label>
@@ -411,7 +411,7 @@
 			<div id="corporate_author_collapse2" class="collapse">
 			    <div class="form-group">
 				<label for="corp_author_romanised2">Corporate author (romanised form):</label>
-				<select id="corp_author_romanised2" class="name_authority_file"></select>
+				<input id="corp_author_romanised2" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label for="corp_author_original2">Corporate author (original script):</label>
@@ -449,7 +449,7 @@
 			<div id="corporate_author_collapse3" class="collapse">
 			    <div class="form-group">
 				<label for="corp_author_romanised3">Corporate author (romanised form):</label>
-				<select id="corp_author_romanised3" class="name_authority_file"></select>
+				<input id="corp_author_romanised3" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label for="corp_author_original3">Corporate author (original script):</label>
@@ -487,7 +487,7 @@
 			<div id="corporate_author_collapse4" class="collapse">
 			    <div class="form-group">
 				<label for="corp_author_romanised4">Corporate author (romanised form):</label>
-				<select id="corp_author_romanised4" class="name_authority_file"></select>
+				<input id="corp_author_romanised4" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label for="corp_author_original4">Corporate author (original script):</label>
@@ -526,7 +526,7 @@
 			    <br>
 			    <div class="form-group">
 				<label for="meet_author_romanised2">Meeting name (romanised form):</label>
-				<select id="meet_author_romanised2" class="name_authority_file"></select>
+				<input id="meet_author_romanised2" class="form-control" type="text">
 			    </div>
 			    <div class="form-group">
 				<label for="meet_author_original2">Meeting name (original script):</label>
@@ -756,74 +756,58 @@
 	    fourth_subject:           `Search for an appropriate subject heading`,
 	    fifth_subject:            `Search for an appropriate subject heading`,
 	    comments:                 `Please use this column to enter comments for British Library staff.`,
-	    pers_author_romanised:    `Search Library of Congress authority files for a personal author. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    pers_author_romanised:    `Enter a personal author (Surname, Forenames).`,
 	    pers_author_original:     `If the personal author was a romanised version, give the original here.`,
 	    pers_author_relationship: `Select the appropriate designation from the dropdown list.`,
 	    pers_author_fore_surname: `Select an option from the dropdown box to indicate that either the name begins `
 	                              + ` with a forename or a surname.`,
-	    pers_author_romanised2:   `Search Library of Congress authority files for a personal author. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    pers_author_romanised2:   `Enter a personal author (Surname, Forenames).`,
 	    pers_author_original2:    `If the personal author was a romanised version, give the original here.`,
 	    pers_author_relationship2:`Select the appropriate designation from the dropdown list.`,
 	    pers_author_fore_surname2:`Select an option from the dropdown box to indicate that either the name begins `
 	                              + ` with a forename or a surname.`,
-	    pers_author_romanised3:   `Search Library of Congress authority files for a personal author. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    pers_author_romanised3:   `Enter a personal author (Surname, Forenames).`,
 	    pers_author_original3:    `If the personal author was a romanised version, give the original here.`,
 	    pers_author_relationship3:`Select the appropriate designation from the dropdown list.`,
 	    pers_author_fore_surname3:`Select an option from the dropdown box to indicate that either the name begins `
 	                              + ` with a forename or a surname.`,
-	    pers_author_romanised4:   `Search Library of Congress authority files for a personal author. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    pers_author_romanised4:   `Enter a personal author (Surname, Forenames).`,
 	    pers_author_original4:    `If the personal author was a romanised version, give the original here.`,
 	    pers_author_relationship4:`Select the appropriate designation from the dropdown list.`,
 	    pers_author_fore_surname4:`Select an option from the dropdown box to indicate that either the name begins `
 	                              + ` with a forename or a surname.`,
-	    corp_author_romanised:    `Search Library of Congress authority files for a corporate author. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    corp_author_romanised:    `Record the body's name given at the top left corder of the card. Do not include`
+				      + ` any brackets.`
 	    corp_author_original:     `If the corporate author was a romanised version, give the original here.`,
 	    corp_author_jurisdiction: `Select from the dropdown box to indicate either that the name is structured as`
 				      + ` a jurisdiction name (e.g. Australia. Department of Defence. Army Office) or`
 				      + ` is entered in direct order (e.g. Malaysian Society of Microbiology).`,
 	    corp_author_relationship: `Select the appropriate designation from the dropdown list.`,
-	    corp_author_romanised2:   `Search Library of Congress authority files for a corporate author. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    corp_author_romanised2:   `Record the body's name given at the top left corder of the card. Do not include`
+				      + ` any brackets.`
 	    corp_author_original2:    `If the corporate author was a romanised version, give the original here.`,
 	    corp_author_jurisdiction2:`Select from the dropdown box to indicate either that the name is structured as`
 				      + ` a jurisdiction name (e.g. Australia. Department of Defence. Army Office) or`
 				      + ` is entered in direct order (e.g. Malaysian Society of Microbiology).`,
 	    corp_author_relationship2:`Select the appropriate designation from the dropdown list.`,
-	    corp_author_romanised3:   `Search Library of Congress authority files for a corporate author. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    corp_author_romanised3:   `Record the body's name given at the top left corder of the card. Do not include`
+				      + ` any brackets.`
 	    corp_author_original3:    `If the corporate author was a romanised version, give the original here.`,
 	    corp_author_jurisdiction3:`Select from the dropdown box to indicate either that the name is structured as`
 				      + ` a jurisdiction name (e.g. Australia. Department of Defence. Army Office) or`
 				      + ` is entered in direct order (e.g. Malaysian Society of Microbiology).`,
 	    corp_author_relationship3:`Select the appropriate designation from the dropdown list.`,
-	    corp_author_romanised4:   `Search Library of Congress authority files for a corporate author. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    corp_author_romanised4:   `Record the body's name given at the top left corder of the card. Do not include`
+				      + ` any brackets.`
 	    corp_author_original4:    `If the corporate author was a romanised version, give the original here.`,
 	    corp_author_jurisdiction4:`Select from the dropdown box to indicate either that the name is structured as`
 				      + ` a jurisdiction name (e.g. Australia. Department of Defence. Army Office) or`
 				      + ` is entered in direct order (e.g. Malaysian Society of Microbiology).`,
 	    corp_author_relationship4:`Select the appropriate designation from the dropdown list.`,
-	    meet_author_romanised:    `Search Library of Congress authority files for a meeting name. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    meet_author_romanised:    `Record the name of the conference, congress, symposium etc.`
 	    meet_author_original:     `If the meeting name was a romanised version, give the original here.`,
 	    meet_author_relationship: `Select the appropriate designation from the dropdown list.`,
-	    meet_author_romanised2:   `Search Library of Congress authority files for a meeting name. If one can't`
-				      + ` be found you can select your original search term, which will appear at the`
-				      + ` top of the list followed by "(new)".`,
+	    meet_author_romanised2:   `Record the name of the conference, congress, symposium etc.`
 	    meet_author_original2:    `If the meeting name was a romanised version, give the original here.`,
 	    meet_author_relationship2:`Select the appropriate designation from the dropdown list.`,
 	    state_of_res_romanised:   `Transcribe a name as given, including any text such as &quot;written by...&quot;`
@@ -852,7 +836,7 @@
 
 	$.getJSON( "https://cdn.rawgit.com/LibCrowds/marc-code-lists/master/countries.json", function(json) {
 	    data = json;
-	    data.push({id: "", text: ""}) // Add default
+	    data.unshift({id: "", text: ""}) // Add default
 	    $("#country").select2({
 		data: data,
 		placeholder: $("#country").attr('placeholder'),
@@ -863,7 +847,7 @@
 
 	$.getJSON( "https://cdn.rawgit.com/LibCrowds/marc-code-lists/master/languages.json", function(json) {
 	    data = json;
-	    data.push({id: "", text: ""}) // Add default
+	    data.unshift({id: "", text: ""}) // Add default
 	    $("#language").select2({
 		data: data,
 		placeholder: $("#language").attr('placeholder'),
@@ -908,82 +892,6 @@
 	    });
 	});
     })();
-
-
-    // For Z39.50 server config see https://www.loc.gov/z3950/lcserver.html
-    $('.name_authority_file').each(function() {
-	let placeholder = $(this).attr('placeholder');
-	$(this).select2({
-	    tags: true,
-	    tags: true,
-	createTag: function (params) {
-	    return {
-		id: params.term,
-		text: params.term,
-		newOption: true
-	    }
-	},
-	templateResult: function (data) {
-	    let result = $("<span></span>");
-	    result.text(data.text);
-	    if (data.newOption) {
-		result.append(" <em><strong>(new)<strong></em>");
-	    }
-	    return result;
-	},
-	    placeholder: placeholder,
-	    ajax: {
-		url: "https://www.libcrowds.com/z3950/search/lcnaf/json",
-		dataType: 'json',
-		cache: true,
-		data: function (params) {
-		    return {
-			query: '"' + params.term + '"'
-		    };
-		},
-		processResults: function (data, params) {
-		    return {
-			results: $.map( data.data, function (record) {
-			    let option = formatNAF(record);
-			    if (option !== null) {
-				return {
-				    id: option,
-				    text: option,
-				    link: record.fields
-				}
-			    }
-			    return null;
-			})
-		    };
-		},
-		minimumInputLength: 1,
-	    }
-	});
-    });
-
-
-    /** Format a named authority file string. */
-    function formatNAF(record) {
-	let option = {id: "", text: "", link: ""}
-	for (let f of record.fields) {
-	    if ("001" in f) {
-		option.link = f.a;  // LOC control number
-	    } else if ("100" in f) {
-		option.id = option.text = $.map(f["100"].subfields, function(sf) {
-		    return sf[Object.keys(sf)[0]];  // Personal name
-		}).join(' ');
-	    } else if ("110" in f) {
-		option.id = option.text = $.map(f["110"].subfields, function(sf) {
-		    return sf[Object.keys(sf)[0]];  // Corporate name
-		}).join(' ');
-	    } else if ("111" in f) {
-		option.id = option.text = $.map(f["111"].subfields, function(sf) {
-		    return sf[Object.keys(sf)[0]];  // Meeting name
-		}).join(' ');
-	    }
-	}
-	return option ? option.id : null;
-    }
 
 
     /** Collapse previous selection when author type radio buttons clicked. */
