@@ -850,11 +850,16 @@
 	$.fn.select2.defaults.set("allowClear", true);
 	$.fn.select2.defaults.set("width", "100%");
 
-	$.getJSON( "https://cdn.rawgit.com/LibCrowds/marc-code-lists/master/index.json", function(json) {
+	$.getJSON( "https://cdn.rawgit.com/LibCrowds/marc-code-lists/master/countries.json", function(json) {
 	    $("#country").select2({
 		data: json.countries,
 		placeholder: $("#country").attr('placeholder'),
 	    });
+	}).fail(function(jqXHR, textStatus) {
+	    pybossaNotify(`Select box error: ${textStatus}`, 'danger');
+	});
+
+	$.getJSON( "https://cdn.rawgit.com/LibCrowds/marc-code-lists/master/languages.json", function(json) {
 	    $("#language").select2({
 		data: json.languages,
 		placeholder: $("#language").attr('placeholder'),
@@ -1189,5 +1194,5 @@
 	}
     });
 
-    pybossa.run('transcriptiontest2');
+    pybossa.run('transcribe-a-card');
 </script>
