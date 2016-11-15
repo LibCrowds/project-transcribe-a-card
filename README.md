@@ -2,6 +2,20 @@
 
 This is the template for the Transcribe-a-Card projects seen on LibCrowds.
 
+The answers submitted follow the format of the spreadsheet for loading metadata into Aleph,
+so when checking the data you can refer to the PDF here:
+
+[Entering_Bibliographic_Metadata_into_Spreadsheets_for_Load_to_Aleph_Monographs.pdf](docs/Entering_Bibliographic_Metadata_into_Spreadsheets_for_Load_to_Aleph_Monographs.pdf)
+
+The headings in the answers submitted through Transcribe-a-Card projects are the same as those
+listed in the above spreadsheet and all data should follow the same format. Notable differences
+with the Transcribe-a-Card data are:
+
+- No "Size" field, as all transcription will be done from cards.
+- No "Other title" fields for the same reason.
+- All authors will be recorded as unauthorised, as it's a lot of extra work to expect volunteers to browse the LOC database and match
+records to the correct authority files.
+
 
 ## Workflow
 
