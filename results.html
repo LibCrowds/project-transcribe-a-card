@@ -1,0 +1,225 @@
+<style>
+    #image-container,
+    #image-container img
+    {
+        width: 100%
+    }
+    #result-table>tbody>tr>td:first-child {
+        width: 1%;
+        white-space: nowrap;
+    }
+    #next-result,
+    #previous-result,
+    #random-result {
+   	display: none;
+    }
+    #result-buttons {
+        text-align: right;
+        margin-top: 20px;
+        margin-bottom: 25px;
+    }
+    @media (max-width: 991px) {
+        #top-row,
+        #top-row #result-buttons {
+            text-align: center;
+        }
+    }
+</style>
+
+<div class="col-sm-9 col-sm-offset-3">
+    <div id="top-row" class="row">
+        <div class="col-xs-12 col-md-6">
+            <h2>Result <span id="result-id">loading...</span></h2>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <!-- Next/previous/random buttons -->
+            <div id="result-buttons">
+                <button id="previous-result" class="btn btn-default">Previous</button>
+                <button id="next-result" class="btn btn-default">Next</button>
+                <button id="random-result" class="btn btn-success">Random</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <!-- Result info loaded here -->
+            <table id="result-table" class="table table-stripped table-responsive table-bordered"></table>
+        </div>
+
+        <div class="col-sm-6">
+            <!-- Image loaded here -->
+            <div id="image-container">
+                <img src="https://i.imgur.com/GeHxzb7.png" alt="Loading">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let results   = {},
+        resultIds = [];
+
+
+    /** Retrieve all results for a project. */
+    function getAllResults(project, deferred) {
+        let last_id = resultIds[resultIds.length - 1];
+        $.ajax({
+            url: '/api/result',
+            data: {
+                project_id: project.id,
+                last_id: last_id,
+                limit: 100,
+                all: 1
+            },
+            dataType: 'json'
+        }).done(function(data) {
+            data.forEach(function(item){
+                results[item.id] = item;
+                resultIds.push(item.id);
+                temp_last_id = item.id;
+            });
+            if (resultIds.length > 0 && resultIds[resultIds.length - 1] != last_id) {
+                getAllResults(project, deferred);
+            } else {
+                deferred.resolve();
+            }
+        });
+    }
+
+
+    /** Retrieve a project from its short name. */
+    function getProject(short_name, deferred) {
+        $.ajax({
+            url: '/api/project',
+            data: {short_name: short_name, all: 1},
+            dataType: 'json'
+        }).done(function(data){
+            if (data[0] == null){
+                pybossaLogError(new Error('Project not found'));
+            }
+            deferred.resolve(data[0]);
+        });
+    }
+
+
+    /** Retrive the task for a result. */
+    function getTask(result, deferred) {
+        $.ajax({
+            url: '/api/task/' + result.task_id,
+            dataType: 'json'
+        }).done(function(data) {
+            if (data == null) {
+                pybossaLogError(new Error('Task not found'));
+            }
+            deferred.resolve(data);
+        });
+    }
+
+
+    /** Load and display the task input. */
+    function loadImage(task) {
+        let img = $("<img />");
+        img.attr('src', task.info.url_b + "?now=" + new Date().getTime());
+        img.addClass("img-responsive");
+        $("#image-container").html("").append(img);
+    }
+
+
+    /** Load the result info into the table. */
+    function loadTable(result) {
+        $('#result-table').html('<tbody></tbody>');
+        if (typeof(result.info) === 'object') {
+            $.each(result.info, function(k, v) {
+                $('#result-table tbody').append(`<tr><td><strong>${k}</strong>
+                                                </td><td>${v}</td></tr>`)
+            });
+        } else {
+            $('#result-table').html(`<thead><tr><th>${result.info}</thead></tr></th>`);
+        }
+    }
+
+
+    /** Load and display result. */
+    function loadResult(result) {
+        let def = $.Deferred();
+        getTask(result, def);
+        def.done(function(task) {
+            $("#task-id").text(task.id);
+            $("#result-id").text(result.id);
+            loadImage(task);
+            loadTable(result);
+            loadResultButtons();
+        });
+    }
+
+
+    /** Load the result buttons. */
+    function loadResultButtons() {
+        let currentResultId = $('#result-id').html(),
+            isFirst         = resultIds[0] == currentResultId,
+            isLast          = resultIds[resultIds.length - 1] == currentResultId;
+        $('#previous-result').hide();
+        $('#next-result').hide();
+        if (!isLast) {
+            $('#next-result').show();
+        }
+        if (!isFirst) {
+            $('#previous-result').show();
+        }
+        $('#random-result').show();
+    }
+
+
+    /** Handle next result button click. */
+    $("#next-result").on('click', function(e){
+        let resultId   = parseInt($('#result-id').html()),
+            nextId     = resultIds[resultIds.indexOf(resultId) + 1],
+            nextResult = results[nextId];
+        if (nextResult == null) {
+            pybossaLogError(new Error('Next result not found'));
+        }
+        loadResult(nextResult);
+    });
+
+
+    /** Handle previous result button click. */
+    $("#previous-result").on('click', function(e){
+        var resultId       = parseInt($('#result-id').html()),
+            previousId     = resultIds[resultIds.indexOf(resultId) - 1],
+            previousResult = results[previousId];
+        if (previousResult == null) {
+            pybossaLogError(new Error('Previous not found'));
+        }
+        loadResult(previousResult);
+    });
+
+
+    /** Handle random result button click. */
+    $("#random-result").off('click').on('click', function(e){
+        var resultId = resultIds[Math.floor(Math.random()*resultIds.length)],
+            result   = results[resultId];
+        loadResult(result);
+    });
+
+
+    /** Load all results and display the first. */
+    function run(short_name) {
+        let idDef  = $.Deferred(),
+            resDef = $.Deferred();
+        getProject(short_name, idDef);
+        idDef.done(function(project) {
+            getAllResults(project, resDef);
+            resDef.done(function() {
+                if (results.length === 0 || resultIds.length === 0) {
+                    pybossaNotify('No results found', 'info');
+                    $('#image-container').hide();
+                    $('#result-id').html('not found');
+                } else {
+                    loadResult(results[resultIds[0]]);
+                }
+            });
+        });
+    }
+
+    run('transcribe-a-card');
+</script>
