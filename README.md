@@ -11,8 +11,8 @@ The headings in the answers submitted through Transcribe-a-Card projects are the
 listed in the above spreadsheet and all data should follow the same format. Notable differences
 with the Transcribe-a-Card data are:
 
-- No "Size" field, as all transcription will be done from cards.
-- No "Other title" fields for the same reason.
+- No *Size* field, as all transcription will be done from cards and the guidance states that this should only be measured when the item is in hand.
+- No *Other title* fields for a similar reason.
 - All authors will be recorded as unauthorised, as it's a lot of extra work to expect volunteers to browse the LOC database and match
 records to the correct authority files.
 
